@@ -23,4 +23,13 @@ $container->registerServiceMap($root_dir . 'app/config/service_map/prod.php');
 unset($root_dir);
 
 // Executing request
-echo $container->getService('request')->execute()->getBody();
+try
+{
+    $page = $container->getService('request')->execute()->getBody();
+}
+catch (\Perfumer\Controller\HTTPException $e)
+{
+    $page = $container->getService('request')->execute('exception', 'http', [$e->getMessage()])->getBody();
+}
+
+echo $page;
