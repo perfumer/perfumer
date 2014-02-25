@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use Perfumer\Controller\CoreController;
 
-class Exception extends CoreController
+class ExceptionController extends CoreController
 {
     public function http($code)
     {
