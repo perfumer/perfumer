@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database name="example" defaultIdMethod="native" namespace="App\Model">
+    <table name="permission" phpName="Permission">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="name" type="varchar" size="255" required="true"/>
+        <column name="token" type="varchar" size="255" required="true"/>
+    </table>
+
+    <table name="role" phpName="Role">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="name" type="varchar" size="255" required="true"/>
+    </table>
+
+    <table name="role_permission" isCrossRef="true">
+        <column name="role_id" type="integer" primaryKey="true"/>
+        <column name="permission_id" type="integer" primaryKey="true"/>
+        <foreign-key foreignTable="role">
+            <reference local="role_id" foreign="id"/>
+        </foreign-key>
+        <foreign-key foreignTable="permission">
+            <reference local="permission_id" foreign="id"/>
+        </foreign-key>
+    </table>
+
+    <table name="token" phpName="Token">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="token" type="varchar" size="255" required="true"/>
+        <column name="user_id" type="integer" required="true"/>
+        <foreign-key foreignTable="user" phpName="User" refPhpName="Token" onDelete="CASCADE">
+            <reference local="user_id" foreign="id"/>
+        </foreign-key>
+        <behavior name="timestampable" />
+    </table>
+
+    <table name="user" phpName="User">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="username" type="varchar" size="255" required="true"/>
+        <column name="password" type="varchar" size="255" required="true"/>
+        <column name="is_admin" type="boolean" required="true" default="false"/>
+        <behavior name="timestampable" />
+    </table>
+
+    <table name="user_role" isCrossRef="true">
+        <column name="user_id" type="integer" primaryKey="true"/>
+        <column name="role_id" type="integer" primaryKey="true"/>
+        <foreign-key foreignTable="user">
+            <reference local="user_id" foreign="id"/>
+        </foreign-key>
+        <foreign-key foreignTable="role">
+            <reference local="role_id" foreign="id"/>
+        </foreign-key>
+    </table>
+</database>
