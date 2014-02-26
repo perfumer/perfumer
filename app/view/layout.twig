@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>{% block title %}Example.com{% endblock %}</title>
+
+    {% for file in css %}
+        <link href="{{ file }}" rel="stylesheet">
+    {% endfor %}
+</head>
+
+<body>
+{% for file in js %}
+    <script src="{{ file }}"></script>
+{% endfor %}
+</body>
+</html>
