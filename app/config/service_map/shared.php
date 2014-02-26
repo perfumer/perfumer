@@ -33,7 +33,7 @@ return [
     ],
     'session.cookie_provider' => [
         'class' => 'Perfumer\\Session\\Token\\Provider\\CookieProvider',
-        'arguments' => ['#cookie']
+        'arguments' => ['#cookie', '@session.cookie_name']
     ],
 
     // Template engine
