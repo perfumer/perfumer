@@ -1,5 +1,7 @@
 <?php
 
+date_default_timezone_set('Asia/Almaty');
+
 // Default url if "/" path info provided
 $container->setParam('app.default_url', 'home');
 
