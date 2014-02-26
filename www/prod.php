@@ -20,6 +20,9 @@ $container->getService('storage.file')->registerFile($root_dir . 'app/config/sto
 // Environment specific service map
 $container->registerServiceMap($root_dir . 'app/config/service_map/prod.php');
 
+// Propel configuration
+require $root_dir . 'app/config/propel/initialize.php';
+
 unset($root_dir);
 
 // Executing request

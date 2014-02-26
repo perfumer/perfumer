@@ -21,6 +21,3 @@ $container->getService('storage.file')->registerFile($root_dir . 'app/config/sto
 
 // Shared service map
 $container->registerServiceMap($root_dir . 'app/config/service_map/shared.php');
-
-// Propel configuration
-require $root_dir . 'app/config/propel/initialize.php';
