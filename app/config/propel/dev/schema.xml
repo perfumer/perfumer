@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<database name="example" defaultIdMethod="native" namespace="App\Model">
+<database name="dev" defaultIdMethod="native" namespace="App\Model">
     <table name="permission" phpName="Permission">
         <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
         <column name="name" type="varchar" size="255" required="true"/>
@@ -15,10 +15,10 @@
         <column name="role_id" type="integer" primaryKey="true"/>
         <column name="permission_id" type="integer" primaryKey="true"/>
         <foreign-key foreignTable="role">
-            <reference local="role_id" foreign="id"/>
+            <reference local="role_id" foreign="id" onDelete="CASCADE"/>
         </foreign-key>
         <foreign-key foreignTable="permission">
-            <reference local="permission_id" foreign="id"/>
+            <reference local="permission_id" foreign="id" onDelete="CASCADE"/>
         </foreign-key>
     </table>
 
@@ -26,7 +26,7 @@
         <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
         <column name="token" type="varchar" size="255" required="true"/>
         <column name="user_id" type="integer" required="true"/>
-        <foreign-key foreignTable="user" phpName="User" refPhpName="Token" onDelete="CASCADE">
+        <foreign-key foreignTable="user" phpName="User" onDelete="CASCADE">
             <reference local="user_id" foreign="id"/>
         </foreign-key>
         <behavior name="timestampable" />
@@ -44,10 +44,10 @@
         <column name="user_id" type="integer" primaryKey="true"/>
         <column name="role_id" type="integer" primaryKey="true"/>
         <foreign-key foreignTable="user">
-            <reference local="user_id" foreign="id"/>
+            <reference local="user_id" foreign="id" onDelete="CASCADE"/>
         </foreign-key>
         <foreign-key foreignTable="role">
-            <reference local="role_id" foreign="id"/>
+            <reference local="role_id" foreign="id" onDelete="CASCADE"/>
         </foreign-key>
     </table>
 </database>

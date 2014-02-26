@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <propel>
+        <datasources default="dev">
+            <datasource id="dev">
+                <adapter>mysql</adapter>
+                <connection>
+                    <dsn>mysql:host=localhost;dbname=dev</dsn>
+                    <user>user</user>
+                    <password>password</password>
+                </connection>
+            </datasource>
+        </datasources>
+    </propel>
+</config>
