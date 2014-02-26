@@ -29,7 +29,7 @@ try
 }
 catch (\Perfumer\Controller\HTTPException $e)
 {
-    $page = $container->getService('request')->execute('exception', 'http', [$e->getMessage()])->getBody();
+    $page = $container->getService('request')->execute('exception', 'http', [$e->getCode()])->getBody();
 }
 
 echo $page;
