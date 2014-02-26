@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
-use Perfumer\Controller\CoreController;
+use Perfumer\Controller\AppController;
 
-class HomeController extends CoreController
+class HomeController extends AppController
 {
     public function get()
     {

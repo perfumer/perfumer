@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
-use Perfumer\Controller\CoreController;
+use Perfumer\Controller\AppController;
 
-class ExceptionController extends CoreController
+class ExceptionController extends AppController
 {
     public function http($code)
     {
