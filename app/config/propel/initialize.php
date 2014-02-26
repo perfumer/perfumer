@@ -10,9 +10,9 @@ $propel_container = Propel::getServiceContainer();
 $propel_container->setAdapterClass($project, $database);
 $propel_connection_manager = new ConnectionManagerSingle();
 $propel_connection_manager->setConfiguration([
-    'dsn' => $container->p('propel.db_dsn'),
+    'dsn' => $container->p('propel.dsn'),
     'user' => $container->p('propel.db_user'),
-    'password' => $container->p('propel.password'),
+    'password' => $container->p('propel.db_password'),
 ]);
 $propel_container->setConnectionManager($project, $propel_connection_manager);
 
