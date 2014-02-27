@@ -8,6 +8,9 @@
                     <dsn>mysql:host=localhost;dbname=dev</dsn>
                     <user>user</user>
                     <password>password</password>
+                    <settings>
+                        <setting id="charset">utf8</setting>
+                    </settings>
                 </connection>
             </datasource>
         </datasources>

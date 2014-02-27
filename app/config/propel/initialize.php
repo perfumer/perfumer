@@ -13,6 +13,9 @@ $propel_connection_manager->setConfiguration([
     'dsn' => $container->p('propel.dsn'),
     'user' => $container->p('propel.db_user'),
     'password' => $container->p('propel.db_password'),
+    'settings' => [
+        'charset' => 'utf8',
+    ]
 ]);
 $propel_container->setConnectionManager($project, $propel_connection_manager);
 
