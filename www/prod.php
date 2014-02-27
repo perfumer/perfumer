@@ -30,7 +30,7 @@ try
 {
     $page = $container->getService('request')->execute()->getBody();
 }
-catch (\Perfumer\Controller\HTTPException $e)
+catch (\Perfumer\Controller\Exception\HTTPException $e)
 {
     $page = $container->getService('request')->execute('exception', 'http', [$e->getCode()])->getBody();
 }
