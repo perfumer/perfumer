@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <database name="dev" defaultIdMethod="native" namespace="App\Model">
+    <vendor type="mysql">
+        <parameter name="Engine" value="InnoDB"/>
+        <parameter name="Charset" value="utf8"/>
+    </vendor>
+    
     <table name="permission" phpName="Permission">
         <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
         <column name="name" type="varchar" size="255" required="true"/>
