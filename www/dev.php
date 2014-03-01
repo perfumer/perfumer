@@ -7,8 +7,7 @@ $container = new \Perfumer\Container\Core();
 // Root directory for project
 $root_dir = __DIR__ . '/../';
 
-$container->setParam('app.root_dir', $root_dir);
-$container->setParam('app.env', 'dev');
+$container->setParam('core.root_dir', $root_dir);
 $container->setParam('twig.debug', true);
 
 // Common initialization for all environments

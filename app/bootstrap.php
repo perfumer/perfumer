@@ -2,9 +2,6 @@
 
 date_default_timezone_set('Asia/Almaty');
 
-// Default url if "/" path info provided
-$container->setParam('app.default_url', 'home');
-
 // Parameters for assets service
 $container->setParamGroup('assets', [
     'source_dir' => $root_dir . 'app/assets',
