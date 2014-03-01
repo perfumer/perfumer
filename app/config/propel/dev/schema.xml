@@ -4,7 +4,7 @@
         <parameter name="Engine" value="InnoDB"/>
         <parameter name="Charset" value="utf8"/>
     </vendor>
-    
+
     <table name="permission" phpName="Permission">
         <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
         <column name="name" type="varchar" size="255" required="true"/>

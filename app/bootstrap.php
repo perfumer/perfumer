@@ -1,22 +1,23 @@
 <?php
 
+// Timezone
 date_default_timezone_set('Asia/Almaty');
 
-// Parameters for assets service
-$container->setParamGroup('assets', [
-    'source_dir' => $root_dir . 'app/assets',
-    'cache_dir' => $root_dir . 'www/assets',
-    'web_path' => 'assets'
-]);
+// Define directory constants
+define('ROOT_DIR', __DIR__ . '/../');
+define('APP_DIR', ROOT_DIR . 'app/');
+define('TMP_DIR', ROOT_DIR . 'tmp/');
+define('VENDOR_DIR', ROOT_DIR . 'vendor/');
+define('WEB_DIR', ROOT_DIR . 'web/');
 
-// Parameters for Twig template engine
-$container->setParamGroup('twig', [
-    'templates_dir' => $root_dir . 'app/view',
-    'cache_dir' => $root_dir . 'tmp/twig'
-]);
+// Composer autoloader
+require VENDOR_DIR . 'autoload.php';
+
+// DI Container initialization
+$container = new \Perfumer\Container\Core();
 
 // Shared file for file storage parameters
-$container->getService('storage.file')->registerFile($root_dir . 'app/config/storage/shared.php');
+$container->getService('storage.file')->registerFile(APP_DIR . 'config/storage/shared.php');
 
 // Shared service map
-$container->registerServiceMap($root_dir . 'app/config/service_map/shared.php');
+$container->registerServiceMap(APP_DIR . 'config/service_map/shared.php');
