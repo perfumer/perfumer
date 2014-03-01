@@ -3,8 +3,8 @@
 return [
     // Assets settings
     'assets' => [
-        'css_path' => WEB_DIR . 'css',
-        'js_path' => WEB_DIR . 'js'
+        'css_path' => 'css',
+        'js_path' => 'js'
     ],
 
     // Session settings

@@ -12,9 +12,8 @@ return [
         'shared' => true,
         'class' => 'Perfumer\\Assets',
         'arguments' => [[
-            'source_dir' => '@assets.source_dir',
-            'cache_dir' => '@assets.cache_dir',
-            'web_path' => '@assets.web_path'
+            'css_path' => '@assets.css_path',
+            'js_path' => '@assets.js_path'
         ]]
     ],
 
