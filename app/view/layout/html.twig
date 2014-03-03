@@ -5,13 +5,13 @@
 
     <title>{% block title %}Example.com{% endblock %}</title>
 
-    {% for file in css %}
+    {% for file in app.css %}
         <link href="{{ file }}" rel="stylesheet">
     {% endfor %}
 </head>
 
 <body>
-{% for file in js %}
+{% for file in app.js %}
     <script src="{{ file }}"></script>
 {% endfor %}
 </body>
