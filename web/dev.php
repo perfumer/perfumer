@@ -13,4 +13,4 @@ $container->registerServiceMap(APP_DIR . 'config/service_map/dev.php');
 require APP_DIR . 'config/propel/initialize.php';
 
 // Executing request
-echo $container->getService('request')->execute()->getBody();
+echo $container->getService('request')->execute()->sendHeaders()->getBody();

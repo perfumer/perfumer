@@ -15,11 +15,11 @@ require APP_DIR . 'config/propel/initialize.php';
 // Executing request
 try
 {
-    $page = $container->getService('request')->execute()->getBody();
+    $page = $container->getService('request')->execute()->sendHeaders()->getBody();
 }
 catch (\Perfumer\Controller\Exception\HTTPException $e)
 {
-    $page = $container->getService('request')->execute('exception', 'http', [$e->getCode()])->getBody();
+    $page = $container->getService('request')->execute('exception', 'http', [$e->getCode()])->sendHeaders()->getBody();
 }
 
 echo $page;
