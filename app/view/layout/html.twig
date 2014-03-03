@@ -11,6 +11,12 @@
 </head>
 
 <body>
+<script>
+    var app = {
+        vars: {{ app.vars|json_encode|raw }}
+    };
+</script>
+
 {% for file in app.js %}
     <script src="{{ file }}"></script>
 {% endfor %}
