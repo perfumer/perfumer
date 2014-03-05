@@ -1,12 +1,17 @@
 <?php
 
 return [
-    'request' => [
-        'class' => 'Perfumer\\Request',
+    'proxy' => [
+        'shared' => true,
+        'class' => 'Perfumer\\Proxy\\Core',
         'arguments' => ['container']
     ],
+    'request' => [
+        'class' => 'Perfumer\\Proxy\\Request',
+        'arguments' => ['container', '#proxy']
+    ],
     'response' => [
-        'class' => 'Perfumer\\Response'
+        'class' => 'Perfumer\\Proxy\\Response'
     ],
     'assets' => [
         'shared' => true,
@@ -15,6 +20,10 @@ return [
             'css_path' => '@assets.css_path',
             'js_path' => '@assets.js_path'
         ]]
+    ],
+    'stock' => [
+        'shared' => true,
+        'class' => 'Perfumer\\Stock'
     ],
 
     // Auth
