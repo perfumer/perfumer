@@ -6,8 +6,8 @@ return [
         'project' => 'example',
         'database' => 'mysql',
         'dsn' => 'mysql:host=localhost;dbname=example',
-        'db_user'     => 'root',
-        'db_password' => 'root'
+        'db_user'     => 'user',
+        'db_password' => 'password'
     ],
 
     // Twig templating settings
