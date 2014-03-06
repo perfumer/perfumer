@@ -13,13 +13,4 @@ $container->registerServiceMap(APP_DIR . 'config/service_map/prod.php');
 require APP_DIR . 'config/propel/initialize.php';
 
 // Executing request
-try
-{
-    $page = $container->getService('request')->execute()->sendHeaders()->getBody();
-}
-catch (\Perfumer\Controller\Exception\HTTPException $e)
-{
-    $page = $container->getService('request')->execute('exception', 'http', [$e->getCode()])->sendHeaders()->getBody();
-}
-
-echo $page;
+echo $container->getService('proxy')->start()->sendHeaders()->getBody();

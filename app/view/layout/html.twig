@@ -17,6 +17,8 @@
     };
 </script>
 
+{% block content %}{% endblock %}
+
 {% for file in app.js %}
     <script src="{{ file }}"></script>
 {% endfor %}

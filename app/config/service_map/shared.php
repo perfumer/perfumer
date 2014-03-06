@@ -8,7 +8,7 @@ return [
     ],
     'request' => [
         'class' => 'Perfumer\\Proxy\\Request',
-        'arguments' => ['container', '#proxy']
+        'arguments' => ['container']
     ],
     'response' => [
         'class' => 'Perfumer\\Proxy\\Response'
