@@ -2,7 +2,7 @@
 
 namespace App\Controller\Filter;
 
-use Perfumer\Controller\AppController;
+use App\Controller\AppController;
 
 class PermissionController extends AppController
 {

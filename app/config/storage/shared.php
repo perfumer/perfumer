@@ -7,15 +7,15 @@ return [
         'js_path' => 'js'
     ],
 
+    // Proxy settings
+    'proxy' => [
+        'default_url' => 'home',
+        'globals' => []
+    ],
+
     // Session settings
     'session' => [
         'cookie_name' => 'session',
         'cookie_lifetime' => 3600
-    ],
-
-    // URL settings
-    'url' => [
-        'default' => 'home',
-        'login' => 'login'
     ]
 ];

@@ -2,7 +2,7 @@
 
 namespace App\Controller\Exception;
 
-use Perfumer\Controller\AppController;
+use App\Controller\AppController;
 
 class HtmlController extends AppController
 {
