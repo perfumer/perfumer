@@ -60,6 +60,11 @@ return [
     ],
 
     // Helpers
+    'arr' => [
+        'shared' => true,
+        'class' => 'Perfumer\\Helper\\Arr'
+    ],
+    
     'cookie' => [
         'shared' => true,
         'class' => 'Perfumer\\Helper\\Cookie'

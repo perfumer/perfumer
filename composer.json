@@ -14,8 +14,6 @@
     "require": {
         "php": ">=5.5.0",
         "perfumer/perfumer": "dev-master",
-        "perfumer/container": "dev-master",
-        "perfumer/helpers": "dev-master",
         "propel/propel": "2.0.0-alpha2",
         "twig/twig": "1.*"
     },
