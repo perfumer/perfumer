@@ -30,7 +30,8 @@ return [
             'debug' => '@twig.debug'
         ]],
         'after' => function($container, $twig) {
-            $twig->addExtension($container->s('twig.proxy_extension'));
+            $twig->addExtension($container->s('twig.container_extension'));
+            $twig->addExtension($container->s('twig.framework_extension'));
         }
     ],
     'twig.loader' => [
@@ -38,9 +39,13 @@ return [
         'class' => 'Twig_Loader_Filesystem',
         'arguments' => ['@twig.templates_dir']
     ],
-    'twig.proxy_extension' => [
-        'class' => 'Perfumer\\Twig\\Extension\\ProxyExtension',
+    'twig.framework_extension' => [
+        'class' => 'Perfumer\\Twig\\Extension\\FrameworkExtension',
         'arguments' => ['#proxy']
+    ],
+    'twig.container_extension' => [
+        'class' => 'Perfumer\\Twig\\Extension\\ContainerExtension',
+        'arguments' => ['container']
     ],
 
     // Assets
