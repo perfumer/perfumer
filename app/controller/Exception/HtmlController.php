@@ -2,9 +2,9 @@
 
 namespace App\Controller\Exception;
 
-use App\Controller\AppController;
+use Perfumer\Controller\HtmlController as BaseController;
 
-class HtmlController extends AppController
+class HtmlController extends BaseController
 {
     public function pageNotFound()
     {

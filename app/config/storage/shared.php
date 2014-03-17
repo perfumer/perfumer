@@ -10,7 +10,7 @@ return [
     // Proxy settings
     'proxy' => [
         'default_url' => 'home',
-        'globals' => []
+        'prefixes' => []
     ],
 
     // Session settings

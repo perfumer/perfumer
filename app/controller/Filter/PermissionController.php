@@ -2,9 +2,9 @@
 
 namespace App\Controller\Filter;
 
-use App\Controller\AppController;
+use App\Controller\PageController;
 
-class PermissionController extends AppController
+class PermissionController extends PageController
 {
     public function before()
     {

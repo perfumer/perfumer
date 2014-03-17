@@ -58,13 +58,16 @@ return [
         'class' => 'Twig_Loader_Filesystem',
         'arguments' => ['@twig.templates_dir']
     ],
+    'twig.proxy_extension' => [
+        'class' => 'Perfumer\\Twig\\Extension\\ProxyExtension',
+        'arguments' => ['#proxy']
+    ],
 
     // Helpers
     'arr' => [
         'shared' => true,
         'class' => 'Perfumer\\Helper\\Arr'
     ],
-    
     'cookie' => [
         'shared' => true,
         'class' => 'Perfumer\\Helper\\Cookie'

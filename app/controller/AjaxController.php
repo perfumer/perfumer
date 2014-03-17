@@ -22,6 +22,8 @@ class AjaxController extends JsonController
 
         $this->user = $this->stock->get('user');
 
-        $this->addAppVar('user', $this->user);
+        $this->addAppVars([
+            'user' => $this->user
+        ]);
     }
 }

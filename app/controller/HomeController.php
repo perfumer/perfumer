@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-class HomeController extends AppController
+class HomeController extends PageController
 {
     public function get()
     {
