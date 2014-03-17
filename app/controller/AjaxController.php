@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
-use Perfumer\Controller\AppController as BaseController;
+use Perfumer\Controller\JsonController;
 
-class AppController extends BaseController
+class AjaxController extends JsonController
 {
     protected function before()
     {
@@ -20,6 +20,8 @@ class AppController extends BaseController
             $this->stock->set('user', $this->container->s('auth')->getUser());
         }
 
-        $this->user = $this->global_vars['user'] = $this->stock->get('user');
+        $this->user = $this->stock->get('user');
+
+        $this->addAppVar('user', $this->user);
     }
 }

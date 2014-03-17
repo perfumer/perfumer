@@ -5,7 +5,7 @@
 
     <title>{% block title %}Example.com{% endblock %}</title>
 
-    {% for file in app.css %}
+    {% for file in css %}
         <link href="{{ file }}" rel="stylesheet">
     {% endfor %}
 </head>
@@ -13,13 +13,13 @@
 <body>
 <script>
     var app = {
-        vars: {{ app.vars|json_encode|raw }}
+        vars: {{ vars|json_encode|raw }}
     };
 </script>
 
 {% block content %}{% endblock %}
 
-{% for file in app.js %}
+{% for file in js %}
     <script src="{{ file }}"></script>
 {% endfor %}
 </body>
