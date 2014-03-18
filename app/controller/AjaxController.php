@@ -10,17 +10,19 @@ class AjaxController extends JsonController
     {
         parent::before();
 
-        if (!$this->stock->has('user'))
+        $php_cache = $this->container->s('cache.php');
+
+        if (!$php_cache->has('user'))
         {
             $token = $this->container->s('session.cookie_provider')->getToken();
 
             $this->container->s('session')->start($token);
             $this->container->s('auth')->init();
 
-            $this->stock->set('user', $this->container->s('auth')->getUser());
+            $php_cache->set('user', $this->container->s('auth')->getUser());
         }
 
-        $this->user = $this->stock->get('user');
+        $this->user = $php_cache->get('user');
 
         $this->addAppVars([
             'user' => $this->user
