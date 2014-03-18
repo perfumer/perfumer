@@ -16,11 +16,19 @@ require VENDOR_DIR . 'autoload.php';
 // DI Container initialization
 $container = new \Perfumer\Container\Core();
 
-// Shared files for file storage parameters
+// Default service maps
+$container->registerServiceMap(APP_DIR . 'config/service_map/framework.php');
+$container->registerServiceMap(APP_DIR . 'config/service_map/shared.php');
+
+// Environment specific service map
+$container->registerServiceMap(APP_DIR . 'config/service_map/' . ENV . '.php');
+
+// Default shared file storage parameters
 $container->getService('storage.file')->registerFile(APP_DIR . 'config/storage/framework.php');
 $container->getService('storage.file')->registerFile(APP_DIR . 'config/storage/shared.php');
 
-// Service maps
-$container->registerServiceMap(APP_DIR . 'config/service_map/helpers.php');
-$container->registerServiceMap(APP_DIR . 'config/service_map/framework.php');
-$container->registerServiceMap(APP_DIR . 'config/service_map/shared.php');
+// Environment specific file storage parameters
+$container->getService('storage.file')->registerFile(APP_DIR . 'config/storage/' . ENV . '.php');
+
+// Propel configuration
+require APP_DIR . 'config/propel/initialize.php';

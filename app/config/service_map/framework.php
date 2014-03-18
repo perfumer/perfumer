@@ -2,6 +2,16 @@
 
 // Perfumer default framework services
 return [
+    // Storage engines
+    'storage.default' => [
+        'shared' => true,
+        'class' => 'Perfumer\\Container\\Storage\\DefaultStorage'
+    ],
+    'storage.file' => [
+        'shared' => true,
+        'class' => 'Perfumer\\Container\\Storage\\FileStorage'
+    ],
+
     // Requesting
     'proxy' => [
         'shared' => true,
@@ -89,5 +99,19 @@ return [
         'shared' => true,
         'class' => 'Perfumer\\Cache\\SqliteCache',
         'arguments' => ['@cache.sqlite_database', '@cache.sqlite_schema', '@cache.lifetime']
-    ]
+    ],
+
+    // Helper services
+    'arr' => [
+        'shared' => true,
+        'class' => 'Perfumer\\Helper\\Arr'
+    ],
+    'cookie' => [
+        'shared' => true,
+        'class' => 'Perfumer\\Helper\\Cookie'
+    ],
+    'feed' => [
+        'shared' => true,
+        'class' => 'Perfumer\\Helper\\Feed'
+    ],
 ];
