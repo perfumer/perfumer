@@ -1,3 +1,4 @@
+tmp/sqlite/*
 tmp/twig/*
 vendor/*
 web/tmp/*
