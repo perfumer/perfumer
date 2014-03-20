@@ -10,9 +10,10 @@ return [
         'db_password' => 'password'
     ],
 
-    // Twig templating settings
-    'twig' => [
+    // Templating settings
+    'templating' => [
         'debug' => true,
+        'extension' => 'twig',
         'templates_dir' => APP_DIR . 'view',
         'cache_dir' => TMP_DIR . 'twig'
     ]

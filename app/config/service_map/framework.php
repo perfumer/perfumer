@@ -36,8 +36,8 @@ return [
         'shared' => true,
         'class' => 'Twig_Environment',
         'arguments' => ['#twig.loader', [
-            'cache' => '@twig.cache_dir',
-            'debug' => '@twig.debug'
+            'cache' => '@templating.cache_dir',
+            'debug' => '@templating.debug'
         ]],
         'after' => function($container, $twig) {
             $twig->addExtension($container->s('twig.framework_extension'));
@@ -46,7 +46,7 @@ return [
     'twig.loader' => [
         'shared' => true,
         'class' => 'Twig_Loader_Filesystem',
-        'arguments' => ['@twig.templates_dir']
+        'arguments' => ['@templating.templates_dir']
     ],
     'twig.framework_extension' => [
         'class' => 'Perfumer\\Twig\\Extension\\FrameworkExtension',
