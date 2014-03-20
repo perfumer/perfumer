@@ -41,6 +41,7 @@ return [
         ]],
         'after' => function($container, $twig) {
             $twig->addExtension($container->s('twig.framework_extension'));
+            $twig->addExtension($container->s('twig.assets_extension'));
         }
     ],
     'twig.loader' => [
@@ -52,12 +53,17 @@ return [
         'class' => 'Perfumer\\Twig\\Extension\\FrameworkExtension',
         'arguments' => ['container']
     ],
+    'twig.assets_extension' => [
+        'class' => 'Perfumer\\Twig\\Extension\\AssetsExtension',
+        'arguments' => ['#assets']
+    ],
 
     // Assets
     'assets' => [
         'shared' => true,
         'class' => 'Perfumer\\Assets',
         'arguments' => [[
+            'vendor_path' => '@assets.vendor_path',
             'css_path' => '@assets.css_path',
             'js_path' => '@assets.js_path'
         ]]

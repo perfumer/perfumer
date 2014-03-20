@@ -5,7 +5,10 @@
 
     <title>{% block title %}Example.com{% endblock %}</title>
 
-    {% for file in css %}
+    {% block css %}
+    {% endblock %}
+
+    {% for file in get_css %}
         <link href="{{ file }}" rel="stylesheet">
     {% endfor %}
 </head>
@@ -19,7 +22,10 @@
 
 {% block content %}{% endblock %}
 
-{% for file in js %}
+{% block js %}
+{% endblock %}
+
+{% for file in get_js %}
     <script src="{{ file }}"></script>
 {% endfor %}
 </body>

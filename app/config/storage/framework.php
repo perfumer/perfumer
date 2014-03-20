@@ -9,6 +9,7 @@ return [
 
     // Assets settings
     'assets' => [
+        'vendor_path' => 'vendor',
         'css_path' => 'css',
         'js_path' => 'js'
     ],
