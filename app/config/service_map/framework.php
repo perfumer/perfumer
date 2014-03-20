@@ -40,7 +40,6 @@ return [
             'debug' => '@twig.debug'
         ]],
         'after' => function($container, $twig) {
-            $twig->addExtension($container->s('twig.container_extension'));
             $twig->addExtension($container->s('twig.framework_extension'));
         }
     ],
