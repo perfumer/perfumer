@@ -23,6 +23,10 @@ $container->registerServiceMap(APP_DIR . 'config/service_map/shared.php');
 // Environment specific service map
 $container->registerServiceMap(APP_DIR . 'config/service_map/' . ENV . '.php');
 
+// Registering storage services
+$container->registerStorage('default', $container->getService('storage.default'));
+$container->registerStorage('file', $container->getService('storage.file'));
+
 // Default shared file storage parameters
 $container->getService('storage.file')->registerFile(APP_DIR . 'config/storage/framework.php');
 $container->getService('storage.file')->registerFile(APP_DIR . 'config/storage/shared.php');
