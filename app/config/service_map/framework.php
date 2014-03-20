@@ -50,7 +50,7 @@ return [
     ],
     'twig.framework_extension' => [
         'class' => 'Perfumer\\Twig\\Extension\\FrameworkExtension',
-        'arguments' => ['#proxy']
+        'arguments' => ['container']
     ],
 
     // Assets
