@@ -14,6 +14,11 @@ return [
         'js_path' => 'js'
     ],
 
+    // Auth settings
+    'auth' => [
+        'update_gap' => 3600
+    ],
+
     // Session settings
     'session' => [
         'cookie_name' => 'session',
