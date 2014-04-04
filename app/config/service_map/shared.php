@@ -6,5 +6,4 @@
  * so you can overwrite any default framework services here.
  */
 return [
-
 ];

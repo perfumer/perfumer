@@ -77,7 +77,7 @@ return [
     ],
 
     // Session
-    'session' => [
+    'session.native' => [
         'shared' => true,
         'class' => 'Perfumer\\Session\\NativeSession',
         'arguments' => ['#cookie', '@session.cookie_name', '@session.cookie_lifetime']
