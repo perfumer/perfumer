@@ -14,16 +14,12 @@ return [
         'js_path' => 'js'
     ],
 
-    // Auth settings
+    // Auth and session settings
     'auth' => [
-        'enabled' => true,
-        'update_gap' => 3600
-    ],
-
-    // Session settings
-    'session' => [
-        'cookie_name' => 'session',
-        'cookie_lifetime' => 3600,
+        'update_gap' => 3600,
+        'session_cookie_name' => 'session',
+        'session_cookie_lifetime' => 3600,
+        'api_secret' => '',
         'api_token_name' => 'API_TOKEN',
         'api_secret_name' => 'API_SECRET'
     ],

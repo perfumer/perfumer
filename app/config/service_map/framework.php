@@ -86,18 +86,18 @@ return [
     ],
 
     // Session
-    'session.native' => [
+    'session' => [
         'shared' => true,
         'class' => 'Perfumer\\Session\\NativeSession',
-        'arguments' => ['#cookie', '@session.cookie_name', '@session.cookie_lifetime']
+        'arguments' => ['#cookie', '@auth.session_cookie_name', '@auth.session_cookie_lifetime']
     ],
     'session.cookie_provider' => [
         'class' => 'Perfumer\\Session\\Token\\Provider\\CookieProvider',
-        'arguments' => ['@session.cookie_name']
+        'arguments' => ['@auth.session_cookie_name']
     ],
     'session.header_provider' => [
         'class' => 'Perfumer\\Session\\Token\\Provider\\HeaderProvider',
-        'arguments' => ['@session.api_token_name']
+        'arguments' => ['@auth.api_token_name']
     ],
 
     // Cache
