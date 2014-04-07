@@ -12,8 +12,6 @@ class AjaxController extends JsonController
     {
         parent::before();
 
-        $token = $this->container->s('session.cookie_provider')->getToken();
-        $this->container->s('session')->start($token);
         $this->user = $this->container->s('auth')->getUser();
 
         $this->addAppVars([

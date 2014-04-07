@@ -70,10 +70,12 @@ return [
     ],
 
     // Auth
-    'auth' => [
+    'auth.native' => [
         'shared' => true,
         'class' => 'Perfumer\\Auth\\Core',
-        'arguments' => ['#session']
+        'arguments' => ['#session', '#session.cookie_provider', [
+            'update_gap' => '@auth.update_gap'
+        ]]
     ],
 
     // Session
