@@ -1,6 +1,6 @@
 {
-    "status": "{% block status %}{{ status|default(0) }}{% endblock %}",
-    "message": "{% block message %}{{ message|default('') }}{% endblock %}",
-    "content": "{% block content %}{{ content|default('') }}{% endblock %}",
-    "errors": {% block errors %}{{ errors|default([])|json_encode|raw }}{% endblock %}
+    "status": "{{ status|default(0) }}",
+    "message": "{{ message|default('') }}",
+    "content": "{% if content is iterable %}{{ content|default([])|json_encode|raw }}{% else %}{{ content|default('') }}{% endif %}",
+    "errors": {{ errors|default([])|json_encode|raw }}
 }
