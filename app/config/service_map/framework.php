@@ -93,7 +93,7 @@ return [
     ],
     'session.cookie_provider' => [
         'class' => 'Perfumer\\Session\\Token\\Provider\\CookieProvider',
-        'arguments' => ['#cookie', '@session.cookie_name']
+        'arguments' => ['@session.cookie_name']
     ],
     'session.header_provider' => [
         'class' => 'Perfumer\\Session\\Token\\Provider\\HeaderProvider',
