@@ -11,7 +11,7 @@ class PageController extends HtmlController
     protected function before()
     {
         parent::before();
-        
+
         $this->user = $this->container->s('auth')->getUser();
 
         $this->addAppVars([

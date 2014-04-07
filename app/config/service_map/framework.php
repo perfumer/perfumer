@@ -77,6 +77,13 @@ return [
             'update_gap' => '@auth.update_gap'
         ]]
     ],
+    'auth.api' => [
+        'shared' => true,
+        'class' => 'Perfumer\\Auth\\Core',
+        'arguments' => ['#session', '#session.header_provider', [
+            'update_gap' => '@auth.update_gap'
+        ]]
+    ],
 
     // Session
     'session.native' => [
@@ -87,6 +94,10 @@ return [
     'session.cookie_provider' => [
         'class' => 'Perfumer\\Session\\Token\\Provider\\CookieProvider',
         'arguments' => ['#cookie', '@session.cookie_name']
+    ],
+    'session.header_provider' => [
+        'class' => 'Perfumer\\Session\\Token\\Provider\\HeaderProvider',
+        'arguments' => ['@session.api_token_name']
     ],
 
     // Cache
