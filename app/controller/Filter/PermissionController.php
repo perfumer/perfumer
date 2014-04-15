@@ -10,7 +10,7 @@ class PermissionController extends PageController
     {
         parent::before();
 
-        $this->render_template = false;
+        $this->view->setRendering(false);
     }
 
     public function isLogged($mode)

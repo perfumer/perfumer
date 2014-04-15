@@ -3,8 +3,8 @@
 return [
     // Proxy settings
     'proxy' => [
-        'default_url' => 'home',
-        'prefixes' => []
+        'default_url' => 'saas/home',
+        'prefixes' => ['company']
     ],
 
     // Assets settings

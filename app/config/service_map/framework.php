@@ -26,9 +26,19 @@ return [
         'class' => 'Perfumer\\Proxy\\Response'
     ],
 
-    // Template engine
-    'templating' => [
-        'alias' => 'twig'
+    // View
+    'view' => [
+        'class' => 'Perfumer\\View\\Core',
+        'arguments' => ['#templating.twig', [
+            'templating_extension' => '@templating.extension'
+        ]]
+    ],
+
+    // Template engines
+    'templating.twig' => [
+        'shared' => true,
+        'class' => 'Perfumer\\View\\Templating\\TwigTemplating',
+        'arguments' => ['#twig']
     ],
 
     // Twig
@@ -50,11 +60,11 @@ return [
         'arguments' => ['@templating.templates_dir']
     ],
     'twig.framework_extension' => [
-        'class' => 'Perfumer\\Twig\\Extension\\FrameworkExtension',
+        'class' => 'Perfumer\\View\\Extension\\Twig\\FrameworkExtension',
         'arguments' => ['container']
     ],
     'twig.assets_extension' => [
-        'class' => 'Perfumer\\Twig\\Extension\\AssetsExtension',
+        'class' => 'Perfumer\\View\\Extension\\Twig\\AssetsExtension',
         'arguments' => ['#assets']
     ],
 

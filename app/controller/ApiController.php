@@ -25,5 +25,7 @@ class ApiController extends JsonController
             $this->proxy->forward('exception/api', 'apiSecretInvalid');
 
         $this->user = $this->container->s('auth.api')->getUser();
+
+        $this->view->addVar('user', $this->user, 'app');
     }
 }

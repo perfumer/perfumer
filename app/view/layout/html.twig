@@ -14,13 +14,14 @@
 </head>
 
 <body>
-<script>
-    var app = {
-        vars: {{ vars|json_encode|raw }}
-    };
-</script>
 
 {% block content %}{% endblock %}
+
+<script>
+    var app = {
+        vars: {{ app.js|json_encode|raw }}
+    };
+</script>
 
 {% block js %}
 {% endblock %}

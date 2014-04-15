@@ -14,8 +14,6 @@ class PageController extends HtmlController
 
         $this->user = $this->container->s('auth')->getUser();
 
-        $this->addAppVars([
-            'user' => $this->user
-        ]);
+        $this->view->addVar('user', $this->user, 'app');
     }
 }
