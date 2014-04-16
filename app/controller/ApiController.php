@@ -2,12 +2,12 @@
 
 namespace App\Controller;
 
-use App\Model\ApiSecretQuery;
+use App\Model\ApiApplicationQuery;
 use Perfumer\Controller\JsonController;
 
 class ApiController extends JsonController
 {
-    protected $application;
+    protected $api_application;
     protected $user;
 
     protected function before()
@@ -19,9 +19,9 @@ class ApiController extends JsonController
         if (!isset($_SERVER[$secret_header]))
             $this->proxy->forward('exception/api', 'apiSecretRequired');
 
-        $this->application = ApiSecretQuery::create()->findOneByToken($_SERVER[$secret_header]);
+        $this->api_application = ApiApplication::create()->findOneByToken($_SERVER[$secret_header]);
 
-        if (!$this->application)
+        if (!$this->api_application)
             $this->proxy->forward('exception/api', 'apiSecretInvalid');
 
         $this->user = $this->container->s('auth.api')->getUser();

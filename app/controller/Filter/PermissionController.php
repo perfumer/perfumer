@@ -2,17 +2,10 @@
 
 namespace App\Controller\Filter;
 
-use App\Controller\PageController;
+use App\Controller\PlainController;
 
-class PermissionController extends PageController
+class PermissionController extends PlainController
 {
-    public function before()
-    {
-        parent::before();
-
-        $this->view->setRendering(false);
-    }
-
     public function isLogged($mode)
     {
         if (!$this->user->isLogged())

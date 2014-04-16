@@ -5,10 +5,11 @@
         <parameter name="Charset" value="utf8"/>
     </vendor>
 
-    <table name="api_secret" phpName="ApiSecret">
+    <table name="api_application" phpName="ApiApplication">
         <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="name" type="varchar" size="255" required="true"/>
+        <column name="description" type="longvarchar"/>
         <column name="token" type="varchar" size="255" required="true"/>
-        <column name="description" type="longvarchar" required="true"/>
     </table>
 
     <table name="permission" phpName="Permission">
