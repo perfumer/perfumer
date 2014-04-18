@@ -13,7 +13,7 @@
     ],
     "require": {
         "perfumer/perfumer": "dev-master",
-        "propel/propel": "2.0.0-alpha2",
+        "propel/propel": "2.0.0-alpha3",
         "twig/twig": "1.*"
     },
     "autoload": {

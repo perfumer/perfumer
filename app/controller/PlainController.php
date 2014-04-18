@@ -13,7 +13,5 @@ class PlainController extends CoreController
         parent::before();
 
         $this->user = $this->container->s('auth')->getUser();
-
-        $this->view->addVar('user', $this->user, 'app');
     }
 }
