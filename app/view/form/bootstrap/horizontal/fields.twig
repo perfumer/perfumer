@@ -1,0 +1,127 @@
+{% macro text(label, name, value) %}
+    <div class="form-group">
+        <label class="col-sm-2 control-label">{{ label }}</label>
+        <div class="col-sm-10">
+            <input name="{{ name }}" type="text" class="form-control" value="{{ value|default('') }}">
+            <div class="error" role="error error-{{ name }}"></div>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro password(label, name, value) %}
+    <div class="form-group">
+        <label class="col-sm-2 control-label">{{ label }}</label>
+        <div class="col-sm-10">
+            <input name="{{ name }}" type="password" class="form-control" value="{{ value|default('') }}">
+            <div class="error" role="error error-{{ name }}"></div>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro number(label, name, value) %}
+    <div class="form-group">
+        <label class="col-sm-2 control-label">{{ label }}</label>
+        <div class="col-sm-10">
+            <input name="{{ name }}" type="number" class="form-control" value="{{ value|default('') }}">
+            <div class="error" role="error error-{{ name }}"></div>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro select_object(label, name, choices, choice_key, choice_value, default_key = null, options = {}) %}
+    <div class="form-group">
+        <label class="col-sm-2 control-label">{{ label }}</label>
+        <div class="col-sm-10">
+            <select name="{{ name }}{% if options.multiple %}[]{% endif %}" class="form-control" {% if options.multiple %}multiple="multiple"{% endif %}>
+                {% if options.empty_key is defined and options.empty_key == true %}
+                    <option></option>
+                {% endif %}
+
+                {% for choice in choices %}
+                    {% set selected = false %}
+
+                    {% if default_key != null %}
+                        {% if options.multiple %}
+                            {% set selected = (attribute(choice, choice_key) in default_key) %}
+                        {% else %}
+                            {% set selected = (default_key == attribute(choice, choice_key)) %}
+                        {% endif %}
+                    {% endif %}
+
+                    <option value="{{ attribute(choice, choice_key) }}" {% if selected %}selected="selected"{% endif %}>{{ attribute(choice, choice_value) }}</option>
+                {% endfor %}
+            </select>
+            <div class="error" role="error error-{{ name }}"></div>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro select_row(label, name, choices, default_key = null, options = {}) %}
+    <div class="form-group">
+        <label class="col-sm-2 control-label">{{ label }}</label>
+        <div class="col-sm-10">
+            <select name="{{ name }}" class="form-control">
+                {% if options.empty_key is defined and options.empty_key == true %}
+                    <option></option>
+                {% endif %}
+
+                {% for choice in choices %}
+                    {% set selected = false %}
+
+                    {% if default_key != null %}
+                        {% set selected = (default_key == choice) %}
+                    {% endif %}
+
+                    <option value="{{ choice }}" {% if selected %}selected="selected"{% endif %}>{{ choice }}</option>
+                {% endfor %}
+            </select>
+            <div class="error" role="error error-{{ name }}"></div>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro select_assoc(label, name, choices, default_key = null, options = {}) %}
+    <div class="form-group">
+        <label class="col-sm-2 control-label">{{ label }}</label>
+        <div class="col-sm-10">
+            <select name="{{ name }}" class="form-control">
+                {% if options.empty_key is defined and options.empty_key == true %}
+                    <option></option>
+                {% endif %}
+
+                {% for key, value in choices %}
+                    {% set selected = false %}
+
+                    {% if default_key != null %}
+                        {% set selected = (default_key == key) %}
+                    {% endif %}
+
+                    <option value="{{ key }}" {% if selected %}selected="selected"{% endif %}>{{ value }}</option>
+                {% endfor %}
+            </select>
+            <div class="error" role="error error-{{ name }}"></div>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro textarea(label, name, value, options = {}) %}
+    <div class="form-group">
+        <label class="col-sm-2 control-label">{{ label }}</label>
+        <div class="col-sm-10">
+            <textarea name="{{ name }}" class="form-control" rows="{{ options.rows|default(3) }}">{{ value|default('') }}</textarea>
+            <div class="error" role="error error-{{ name }}"></div>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro hidden(name, value) %}
+    <input type="hidden" name="{{ name }}" value="{{ value|default('') }}">
+{% endmacro %}
+
+{% macro submit(name, role, options = {}) %}
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-{{ options.class|default('primary') }}" role="{{ role|default('') }}">{{ name }}</button>
+        </div>
+    </div>
+{% endmacro %}
