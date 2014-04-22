@@ -1,0 +1,10 @@
+{
+    "name": "perfumer/project",
+    "description": "Set of assets for Perfumer Framework empty project",
+    "dependencies": {
+        "jquery": "2.*",
+        "bootstrap": "3.*",
+        "font-awesome": "4.*",
+        "jquery-role": "kossnocorp/role#1.*"
+    }
+}
