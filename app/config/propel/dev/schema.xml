@@ -62,4 +62,14 @@
             <reference local="role_id" foreign="id" onDelete="CASCADE"/>
         </foreign-key>
     </table>
+
+    <table name="i18n" phpName="I18n">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="name" type="varchar" size="255" required="true"/>
+        <column name="group" type="varchar" size="255" required="true"/>
+        <column name="text" type="longvarchar" required="true"/>
+        <behavior name="i18n">
+            <parameter name="i18n_columns" value="text" />
+        </behavior>
+    </table>
 </database>

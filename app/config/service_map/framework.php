@@ -125,6 +125,21 @@ return [
         'arguments' => ['@cache.sqlite_database', '@cache.sqlite_schema', '@cache.lifetime']
     ],
 
+    // I18n
+    'i18n' => [
+        'shared' => true,
+        'class' => 'Perfumer\\I18n\\Core',
+        'arguments' => ['#cache', [
+            'locale' => '@i18n.default_locale'
+        ]]
+    ],
+
+    // Validator
+    'validator' => [
+        'class' => 'Perfumer\\Validator\\Core',
+        'arguments' => ['#i18n']
+    ],
+
     // Helper services
     'arr' => [
         'shared' => true,
