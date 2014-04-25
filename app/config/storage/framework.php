@@ -9,9 +9,9 @@ return [
 
     // Assets settings
     'assets' => [
-        'vendor_path' => 'vendor',
-        'css_path' => 'css',
-        'js_path' => 'js'
+        'vendor_path' => VENDOR_DIR . 'bower',
+        'source_path' => TMP_DIR . 'assets',
+        'web_path' => WEB_DIR
     ],
 
     // Auth and session settings

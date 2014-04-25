@@ -6,7 +6,6 @@
     <title>{% block title %}Example.com{% endblock %}</title>
 
     {% block css %}
-        {{ add_vendor_css('bootstrap/dist/css/bootstrap.min') }}
     {% endblock %}
 
     {% for file in get_css() %}
@@ -25,9 +24,7 @@
 </script>
 
 {% block js %}
-    {{ add_vendor_js('jquery/dist/jquery.min') }}
-    {{ add_vendor_js('jquery-role/lib/jquery.role.min') }}
-    {{ add_vendor_js('bootstrap/dist/js/bootstrap.min') }}
+    {{ add_vendor_js('angular/angular.min') }}
 {% endblock %}
 
 {% for file in get_js() %}

@@ -74,8 +74,8 @@ return [
         'class' => 'Perfumer\\Assets',
         'arguments' => [[
             'vendor_path' => '@assets.vendor_path',
-            'css_path' => '@assets.css_path',
-            'js_path' => '@assets.js_path'
+            'source_path' => '@assets.source_path',
+            'web_path' => '@assets.web_path'
         ]]
     ],
 

@@ -1,5 +1,5 @@
+.sass-cache
 tmp/sqlite/*
 tmp/twig/*
 vendor/*
-web/tmp/*
 web/vendor/*
