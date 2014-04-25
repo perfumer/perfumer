@@ -1,4 +1,6 @@
 .sass-cache
+tmp/assets/css/*
+tmp/assets/js/*
 tmp/sqlite/*
 tmp/twig/*
 vendor/*
