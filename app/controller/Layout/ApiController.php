@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Layout;
 
 use App\Model\ApiApplicationQuery;
 use Perfumer\Controller\JsonController;

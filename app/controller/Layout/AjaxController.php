@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Layout;
 
-use Perfumer\Controller\CoreController;
+use Perfumer\Controller\JsonController;
 
-class PlainController extends CoreController
+class AjaxController extends JsonController
 {
     protected $user;
 
@@ -13,5 +13,7 @@ class PlainController extends CoreController
         parent::before();
 
         $this->user = $this->container->s('auth')->getUser();
+
+        $this->view->addVar('user', $this->user, 'app');
     }
 }

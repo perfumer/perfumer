@@ -2,7 +2,7 @@
 
 namespace App\Controller\Filter;
 
-use App\Controller\PlainController;
+use App\Controller\Layout\PlainController;
 
 class PermissionController extends PlainController
 {

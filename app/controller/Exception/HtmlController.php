@@ -2,7 +2,7 @@
 
 namespace App\Controller\Exception;
 
-use App\Controller\PageController;
+use App\Controller\Layout\PageController;
 
 class HtmlController extends PageController
 {

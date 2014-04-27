@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Layout;
 
-use Perfumer\Controller\JsonController;
+use Perfumer\Controller\HtmlController;
 
-class AjaxController extends JsonController
+class PageController extends HtmlController
 {
     protected $user;
 
