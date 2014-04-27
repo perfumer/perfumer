@@ -3,6 +3,7 @@
 return [
     // Proxy settings
     'proxy' => [
+        'data_type' => 'query_string',
         'default_url' => 'saas/home',
         'prefixes' => ['company']
     ],
