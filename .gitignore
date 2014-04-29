@@ -4,4 +4,6 @@ tmp/assets/js/*
 tmp/sqlite/*
 tmp/twig/*
 vendor/*
+web/css/*
+web/js/*
 web/vendor/*

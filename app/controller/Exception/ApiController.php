@@ -2,10 +2,13 @@
 
 namespace App\Controller\Exception;
 
-use Perfumer\Controller\JsonController as BaseController;
+use Perfumer\Controller\Helper\StatusResponseHelper;
+use Perfumer\Controller\TemplateController;
 
-class ApiController extends BaseController
+class ApiController extends TemplateController
 {
+    use StatusResponseHelper;
+
     public function apiSecretRequired()
     {
         $this->setErrorMessage('You are required to provide application secret key to get access to API.');

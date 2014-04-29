@@ -2,10 +2,13 @@
 
 namespace App\Controller\Exception;
 
-use Perfumer\Controller\JsonController as BaseController;
+use Perfumer\Controller\Helper\StatusResponseHelper;
+use Perfumer\Controller\TemplateController;
 
-class JsonController extends BaseController
+class JsonController extends TemplateController
 {
+    use StatusResponseHelper;
+
     public function pageNotFound()
     {
         $this->setErrorMessage('Page not found.');
