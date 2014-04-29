@@ -20,12 +20,12 @@ class ApiController extends TemplateController
         if (!method_exists($this, $this->request->getAction()))
             $this->proxy->forward('exception/json', 'pageNotFound');
 
-        $secret_header = 'HTTP_' . $this->container->p('session.api_secret_name');
+        $secret_header = 'HTTP_' . $this->container->p('auth.api_secret_name');
 
         if (!isset($_SERVER[$secret_header]))
             $this->proxy->forward('exception/api', 'apiSecretRequired');
 
-        $this->api_application = ApiApplication::create()->findOneByToken($_SERVER[$secret_header]);
+        $this->api_application = ApiApplicationQuery::create()->findOneByToken($_SERVER[$secret_header]);
 
         if (!$this->api_application)
             $this->proxy->forward('exception/api', 'apiSecretInvalid');
