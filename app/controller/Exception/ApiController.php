@@ -18,4 +18,13 @@ class ApiController extends TemplateController
     {
         $this->setErrorMessage('Invalid application secret key.');
     }
+
+    protected function after()
+    {
+        $this->prepareStatusResponseViewVars();
+
+        $this->view->setTemplateIfNotDefined('layout/json');
+
+        parent::after();
+    }
 }

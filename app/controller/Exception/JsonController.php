@@ -28,4 +28,13 @@ class JsonController extends TemplateController
     {
         $this->setErrorMessage('You do not have enough rights to access this page.');
     }
+
+    protected function after()
+    {
+        $this->prepareStatusResponseViewVars();
+
+        $this->view->setTemplateIfNotDefined('layout/json');
+
+        parent::after();
+    }
 }
