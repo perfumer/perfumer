@@ -6,6 +6,6 @@ return [
     ],
 
     'cache' => [
-        'alias' => 'cache.sqlite'
+        'alias' => 'cache.memcache'
     ]
 ];

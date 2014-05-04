@@ -130,15 +130,6 @@ return [
             ]
         ]]
     ],
-    'cache.sqlite' => [
-        'shared' => true,
-        'class' => 'Perfumer\\Cache\\SqliteCache',
-        'arguments' => [[
-            'database' => '@cache.sqlite_database',
-            'schema' => '@cache.sqlite_schema',
-            'lifetime' => '@cache.lifetime'
-        ]]
-    ],
 
     // I18n
     'i18n' => [
