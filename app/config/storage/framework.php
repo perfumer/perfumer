@@ -22,6 +22,15 @@ return [
     'cache' => [
         'lifetime' => 3600,
         'sqlite_database' => TMP_DIR . 'sqlite/cache.sql3',
-        'sqlite_schema' => 'CREATE TABLE caches(id VARCHAR(127) PRIMARY KEY, expiration INTEGER, cache TEXT)'
+        'sqlite_schema' => 'CREATE TABLE caches(id VARCHAR(127) PRIMARY KEY, expiration INTEGER, cache TEXT)',
+        'memcache_server' => [
+            'host' => 'localhost',
+            'port' => 11211,
+            'persistent' => false,
+            'weight' => 1,
+            'timeout' => 1,
+            'retry_interval' => 15,
+            'status' => true
+        ]
     ]
 ];

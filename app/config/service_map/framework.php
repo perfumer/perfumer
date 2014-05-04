@@ -120,10 +120,24 @@ return [
         'shared' => true,
         'class' => 'Perfumer\\Cache\\PhpCache'
     ],
+    'cache.memcache' => [
+        'shared' => true,
+        'class' => 'Perfumer\\Cache\\MemcacheCache',
+        'arguments' => [[
+            'lifetime' => '@cache.lifetime',
+            'servers' => [
+                '@cache.memcache_server'
+            ]
+        ]]
+    ],
     'cache.sqlite' => [
         'shared' => true,
         'class' => 'Perfumer\\Cache\\SqliteCache',
-        'arguments' => ['@cache.sqlite_database', '@cache.sqlite_schema', '@cache.lifetime']
+        'arguments' => [[
+            'database' => '@cache.sqlite_database',
+            'schema' => '@cache.sqlite_schema',
+            'lifetime' => '@cache.lifetime'
+        ]]
     ],
 
     // I18n
