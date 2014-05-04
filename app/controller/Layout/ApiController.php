@@ -3,12 +3,18 @@
 namespace App\Controller\Layout;
 
 use App\Model\ApiApplicationQuery;
-use Perfumer\Controller\Helper\StatusResponseHelper;
+use Perfumer\Controller\Helper\ContentHelper;
+use Perfumer\Controller\Helper\ErrorsHelper;
+use Perfumer\Controller\Helper\MessageHelper;
+use Perfumer\Controller\Helper\StatusHelper;
 use Perfumer\Controller\TemplateController;
 
 class ApiController extends TemplateController
 {
-    use StatusResponseHelper;
+    use StatusHelper;
+    use MessageHelper;
+    use ErrorsHelper;
+    use ContentHelper;
 
     protected $api_application;
     protected $user;
@@ -33,11 +39,19 @@ class ApiController extends TemplateController
         $this->user = $this->container->s('auth.api')->getUser();
 
         $this->view->addVar('user', $this->user, 'app');
+
+        $this->statusBeforeFilter();
+        $this->messageBeforeFilter();
+        $this->errorsBeforeFilter();
+        $this->contentBeforeFilter();
     }
 
     protected function after()
     {
-        $this->prepareStatusResponseViewVars();
+        $this->errorStatusAfterFilter();
+        $this->statusMessageAfterFilter();
+        $this->errorsAfterFilter();
+        $this->contentAfterFilter();
 
         $this->view->setTemplateIfNotDefined('layout/json');
 

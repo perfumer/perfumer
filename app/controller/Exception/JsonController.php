@@ -2,12 +2,22 @@
 
 namespace App\Controller\Exception;
 
-use Perfumer\Controller\Helper\StatusResponseHelper;
+use Perfumer\Controller\Helper\MessageHelper;
+use Perfumer\Controller\Helper\StatusHelper;
 use Perfumer\Controller\TemplateController;
 
 class JsonController extends TemplateController
 {
-    use StatusResponseHelper;
+    use StatusHelper;
+    use MessageHelper;
+
+    protected function before()
+    {
+        parent::before();
+
+        $this->statusBeforeFilter();
+        $this->messageBeforeFilter();
+    }
 
     public function pageNotFound()
     {
@@ -31,7 +41,8 @@ class JsonController extends TemplateController
 
     protected function after()
     {
-        $this->prepareStatusResponseViewVars();
+        $this->errorStatusAfterFilter();
+        $this->statusMessageAfterFilter();
 
         $this->view->setTemplateIfNotDefined('layout/json');
 
