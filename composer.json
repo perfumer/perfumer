@@ -11,9 +11,6 @@
             "role": "Developer"
         }
     ],
-    "config": {
-        "vendor-dir": "vendor/composer"
-    },
     "require": {
         "perfumer/perfumer": "dev-master",
         "propel/propel": "2.0.0-alpha3",

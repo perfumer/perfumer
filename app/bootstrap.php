@@ -11,7 +11,7 @@ define('VENDOR_DIR', ROOT_DIR . 'vendor/');
 define('WEB_DIR', ROOT_DIR . 'web/');
 
 // Composer autoloader
-require VENDOR_DIR . 'composer/autoload.php';
+require VENDOR_DIR . 'autoload.php';
 
 // DI Container initialization
 $container = new \Perfumer\Container\Core();

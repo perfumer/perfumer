@@ -73,7 +73,6 @@ return [
         'shared' => true,
         'class' => 'Perfumer\\Assets',
         'arguments' => ['#cache', [
-            'vendor_path' => '@assets.vendor_path',
             'source_path' => '@assets.source_path',
             'web_path' => '@assets.web_path',
             'combine' => '@assets.combine'

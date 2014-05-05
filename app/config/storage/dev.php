@@ -20,7 +20,6 @@ return [
 
     // Assets settings
         'assets' => [
-        'vendor_path' => VENDOR_DIR . 'bower',
         'source_path' => TMP_DIR . 'assets',
         'web_path' => WEB_DIR,
         'combine' => false
