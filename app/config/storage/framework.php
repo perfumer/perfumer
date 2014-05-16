@@ -30,5 +30,10 @@ return [
             'retry_interval' => 15,
             'status' => true
         ]
-    ]
+    ],
+
+    // I18n settings
+    'i18n' => [
+        'default_locale' => 'en'
+    ],
 ];
