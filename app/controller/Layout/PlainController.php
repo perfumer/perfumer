@@ -12,6 +12,6 @@ class PlainController extends CoreController
     {
         parent::before();
 
-        $this->user = $this->container->s('auth')->getUser();
+        $this->user = $this->getContainer()->s('auth')->getUser();
     }
 }

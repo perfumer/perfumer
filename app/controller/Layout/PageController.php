@@ -12,13 +12,13 @@ class PageController extends TemplateController
     {
         parent::before();
 
-        if (!method_exists($this, $this->request->getAction()))
-            $this->proxy->forward('exception/html', 'pageNotFound');
+        if (!method_exists($this, $this->getCurrent()->getAction()))
+            $this->getProxy()->forward('exception/html', 'pageNotFound');
 
-        $this->view->mapGroup('js', 'app');
+        $this->getView()->mapGroup('js', 'app');
 
-        $this->user = $this->container->s('auth')->getUser();
+        $this->user = $this->getContainer()->s('auth')->getUser();
 
-        $this->view->addVar('user', $this->user, 'app');
+        $this->getView()->addVar('user', $this->user, 'app');
     }
 }

@@ -21,12 +21,12 @@ class AjaxController extends TemplateController
     {
         parent::before();
 
-        if (!method_exists($this, $this->request->getAction()))
-            $this->proxy->forward('exception/json', 'pageNotFound');
+        if (!method_exists($this, $this->getCurrent()->getAction()))
+            $this->getProxy()->forward('exception/json', 'pageNotFound');
 
-        $this->user = $this->container->s('auth')->getUser();
+        $this->user = $this->getContainer()->s('auth')->getUser();
 
-        $this->view->addVar('user', $this->user, 'app');
+        $this->getView()->addVar('user', $this->user, 'app');
 
         $this->statusBeforeFilter();
         $this->messageBeforeFilter();
@@ -41,7 +41,7 @@ class AjaxController extends TemplateController
         $this->errorsAfterFilter();
         $this->contentAfterFilter();
 
-        $this->view->setTemplateIfNotDefined('layout/json');
+        $this->getView()->setTemplateIfNotDefined('layout/json');
 
         parent::after();
     }

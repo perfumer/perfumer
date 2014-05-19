@@ -23,22 +23,22 @@ class ApiController extends TemplateController
     {
         parent::before();
 
-        if (!method_exists($this, $this->request->getAction()))
-            $this->proxy->forward('exception/json', 'pageNotFound');
+        if (!method_exists($this, $this->getCurrent()->getAction()))
+            $this->getProxy()->forward('exception/json', 'pageNotFound');
 
-        $secret_header = 'HTTP_' . $this->container->p('auth.api_secret_name');
+        $secret_header = 'HTTP_' . $this->getContainer()->p('auth.api_secret_name');
 
         if (!isset($_SERVER[$secret_header]))
-            $this->proxy->forward('exception/api', 'apiSecretRequired');
+            $this->getProxy()->forward('exception/api', 'apiSecretRequired');
 
         $this->api_application = ApiApplicationQuery::create()->findOneByToken($_SERVER[$secret_header]);
 
         if (!$this->api_application)
-            $this->proxy->forward('exception/api', 'apiSecretInvalid');
+            $this->getProxy()->forward('exception/api', 'apiSecretInvalid');
 
-        $this->user = $this->container->s('auth.api')->getUser();
+        $this->user = $this->getContainer()->s('auth.api')->getUser();
 
-        $this->view->addVar('user', $this->user, 'app');
+        $this->getView()->addVar('user', $this->user, 'app');
 
         $this->statusBeforeFilter();
         $this->messageBeforeFilter();
@@ -53,7 +53,7 @@ class ApiController extends TemplateController
         $this->errorsAfterFilter();
         $this->contentAfterFilter();
 
-        $this->view->setTemplateIfNotDefined('layout/json');
+        $this->getView()->setTemplateIfNotDefined('layout/json');
 
         parent::after();
     }

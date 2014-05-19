@@ -34,7 +34,7 @@ class ApiController extends TemplateController
         $this->errorStatusAfterFilter();
         $this->statusMessageAfterFilter();
 
-        $this->view->setTemplateIfNotDefined('layout/json');
+        $this->getView()->setTemplateIfNotDefined('layout/json');
 
         parent::after();
     }
