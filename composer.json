@@ -14,7 +14,8 @@
     "require": {
         "perfumer/perfumer": "dev-master",
         "propel/propel": "2.0.0-alpha3",
-        "twig/twig": "1.*"
+        "twig/twig": "1.*",
+        "beelab/bowerphp": "0.1.*@alpha"
     },
     "autoload": {
         "psr-4": {
