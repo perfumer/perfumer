@@ -3,9 +3,11 @@
 return [
     // Proxy settings
     'proxy' => [
-        'data_type' => 'query_string',
         'default_url' => 'home',
-        'prefixes' => []
+        'prefixes' => [],
+        'data_type' => 'query_string',
+        'auto_trim' => true,
+        'auto_null' => true
     ],
 
     // Auth and session settings
