@@ -1,6 +1,7 @@
 .sass-cache
 tmp/twig/*
 vendor/*
+web/attachments/*
 web/css/*
 web/js/*
 web/vendor/*
