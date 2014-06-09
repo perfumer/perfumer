@@ -6,7 +6,7 @@ return [
         'project' => 'example',
         'database' => 'mysql',
         'dsn' => 'mysql:host=localhost;dbname=example',
-        'db_user'     => 'user',
+        'db_user' => 'user',
         'db_password' => 'password'
     ],
 
@@ -19,8 +19,8 @@ return [
     ],
 
     // Assets settings
-        'assets' => [
-        'source_path' => TMP_DIR . 'assets',
+    'assets' => [
+        'source_path' => APP_DIR . 'assets',
         'web_path' => WEB_DIR,
         'combine' => false
     ]
