@@ -26,6 +26,33 @@ return [
         'class' => 'Perfumer\\Proxy\\Response'
     ],
 
+    // Propel ORM
+    'propel.service_container' => [
+        'shared' => true,
+        'class' => 'Propel\\Runtime\\Propel',
+        'static_init' => 'getServiceContainer',
+        'after' => function($container, $service_container) {
+            $project = $container->getParam('propel.project');
+            $database = $container->getParam('propel.database');
+            $connection_manager = $container->getService('propel.connection_manager');
+            $service_container->setAdapterClass($project, $database);
+            $service_container->setConnectionManager($project, $connection_manager);
+        }
+    ],
+    'propel.connection_manager' => [
+        'class' => 'Propel\\Runtime\\Connection\\ConnectionManagerSingle',
+        'after' => function($container, $connection_manager) {
+            $connection_manager->setConfiguration([
+                'dsn' => $container->getParam('propel.dsn'),
+                'user' => $container->getParam('propel.db_user'),
+                'password' => $container->getParam('propel.db_password'),
+                'settings' => [
+                    'charset' => 'utf8',
+                ]
+            ]);
+        }
+    ],
+
     // View
     'view' => [
         'class' => 'Perfumer\\View\\Core',

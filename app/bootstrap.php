@@ -36,4 +36,4 @@ $container->getService('storage.file')->registerFile(APP_DIR . 'config/storage/s
 $container->getService('storage.file')->registerFile(APP_DIR . 'config/storage/' . ENV . '.php');
 
 // Propel configuration
-require APP_DIR . 'config/propel/initialize.php';
+$propel_container = $container->getService('propel.service_container');
