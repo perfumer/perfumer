@@ -31,7 +31,7 @@ return [
         'shared' => true,
         'class' => 'Propel\\Runtime\\Propel',
         'static_init' => 'getServiceContainer',
-        'after' => function($container, $service_container) {
+        'after' => function(\Perfumer\Container\Core $container, $service_container) {
             $project = $container->getParam('propel.project');
             $database = $container->getParam('propel.database');
             $connection_manager = $container->getService('propel.connection_manager');
@@ -41,7 +41,7 @@ return [
     ],
     'propel.connection_manager' => [
         'class' => 'Propel\\Runtime\\Connection\\ConnectionManagerSingle',
-        'after' => function($container, $connection_manager) {
+        'after' => function(\Perfumer\Container\Core $container, \Propel\Runtime\Connection\ConnectionManagerSingle $connection_manager) {
             $connection_manager->setConfiguration([
                 'dsn' => $container->getParam('propel.dsn'),
                 'user' => $container->getParam('propel.db_user'),
@@ -76,7 +76,7 @@ return [
             'cache' => '@templating.cache_dir',
             'debug' => '@templating.debug'
         ]],
-        'after' => function($container, $twig) {
+        'after' => function(\Perfumer\Container\Core $container, \Twig_Environment $twig) {
             $twig->addExtension($container->s('twig.framework_extension'));
             $twig->addExtension($container->s('twig.assets_extension'));
         }
@@ -138,23 +138,26 @@ return [
     ],
 
     // Cache
-    'cache.dummy' => [
-        'shared' => true,
-        'class' => 'Perfumer\\Cache\\DummyCache'
-    ],
-    'cache.php' => [
-        'shared' => true,
-        'class' => 'Perfumer\\Cache\\PhpCache'
-    ],
     'cache.memcache' => [
         'shared' => true,
-        'class' => 'Perfumer\\Cache\\MemcacheCache',
-        'arguments' => [[
-            'lifetime' => '@cache.lifetime',
-            'servers' => [
-                '@cache.memcache_server'
-            ]
-        ]]
+        'class' => 'Stash\\Pool',
+        'arguments' => ['#cache.memcache_driver']
+    ],
+    'cache.ephemeral' => [
+        'shared' => true,
+        'class' => 'Stash\\Pool',
+        'arguments' => ['#cache.ephemeral_driver']
+    ],
+    'cache.memcache_driver' => [
+        'shared' => true,
+        'class' => 'Stash\\Driver\\Memcache',
+        'after' => function(\Perfumer\Container\Core $container, \Stash\Driver\Memcache $driver) {
+            $driver->setOptions();
+        }
+    ],
+    'cache.ephemeral_driver' => [
+        'shared' => true,
+        'class' => 'Stash\\Driver\\Ephemeral'
     ],
 
     // I18n

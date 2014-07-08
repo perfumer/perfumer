@@ -8,10 +8,12 @@ class JsController extends CoreController
 {
     public function get()
     {
-        if (!$js = $this->getContainer()->s('cache')->get('assets.js.' . $this->getProxy()->i()))
+        $cache = $this->getContainer()->s('cache')->getItem('assets/js/' . $this->getProxy()->i());
+
+        if ($cache->isMiss())
             $this->getProxy()->forward('exception/html', 'pageNotFound');
 
-        $js = unserialize($js);
+        $js = $cache->get();
 
         $combined = '';
         $source_path = $this->getContainer()->p('assets.source_path');

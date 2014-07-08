@@ -8,10 +8,12 @@ class CssController extends CoreController
 {
     public function get()
     {
-        if (!$css = $this->getContainer()->s('cache')->get('assets.css.' . $this->getProxy()->i()))
+        $cache = $this->getContainer()->s('cache')->getItem('assets/css/' . $this->getProxy()->i());
+
+        if ($cache->isMiss())
             $this->getProxy()->forward('exception/html', 'pageNotFound');
 
-        $css = unserialize($css);
+        $css = $cache->get();
 
         $combined = '';
         $source_path = $this->getContainer()->p('assets.source_path');

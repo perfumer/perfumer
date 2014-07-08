@@ -6,6 +6,6 @@ return [
     ],
 
     'cache' => [
-        'alias' => 'cache.dummy'
+        'alias' => 'cache.ephemeral'
     ]
 ];

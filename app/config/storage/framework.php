@@ -20,20 +20,6 @@ return [
         'api_secret_name' => 'API_SECRET'
     ],
 
-    // Cache settings
-    'cache' => [
-        'lifetime' => 3600,
-        'memcache_server' => [
-            'host' => 'localhost',
-            'port' => 11211,
-            'persistent' => false,
-            'weight' => 1,
-            'timeout' => 1,
-            'retry_interval' => 15,
-            'status' => true
-        ]
-    ],
-
     // I18n settings
     'i18n' => [
         'default_locale' => 'en'

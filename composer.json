@@ -15,6 +15,7 @@
         "perfumer/perfumer": "dev-master",
         "propel/propel": "2.0.0-alpha3",
         "twig/twig": "1.*",
+        "tedivm/stash": "0.12.*",
         "beelab/bowerphp": "0.1.*@alpha"
     },
     "autoload": {
