@@ -19,7 +19,7 @@ class CssController extends CoreController
         $source_path = $this->getContainer()->p('assets.source_path');
 
         foreach ($css as $file)
-            $combined .= file_get_contents($source_path . '/css/' . $file . '.css');
+            $combined .= file_get_contents($source_path . $file);
 
         file_put_contents($this->getContainer()->p('assets.web_path') . '/css/' . $this->getProxy()->i() . '.css', $combined);
 
