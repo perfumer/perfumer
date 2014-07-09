@@ -56,15 +56,6 @@ return [
     // View
     'view' => [
         'class' => 'Perfumer\\View\\Core',
-        'arguments' => ['#templating.twig', [
-            'templating_extension' => '@templating.extension'
-        ]]
-    ],
-
-    // Template engines
-    'templating.twig' => [
-        'shared' => true,
-        'class' => 'Perfumer\\View\\Templating\\TwigTemplating',
         'arguments' => ['#twig']
     ],
 
@@ -73,8 +64,8 @@ return [
         'shared' => true,
         'class' => 'Twig_Environment',
         'arguments' => ['#twig.loader', [
-            'cache' => '@templating.cache_dir',
-            'debug' => '@templating.debug'
+            'cache' => '@twig.cache_dir',
+            'debug' => '@twig.debug'
         ]],
         'after' => function(\Perfumer\Container\Core $container, \Twig_Environment $twig) {
             $twig->addExtension($container->s('twig.framework_extension'));
@@ -84,14 +75,14 @@ return [
     'twig.loader' => [
         'shared' => true,
         'class' => 'Twig_Loader_Filesystem',
-        'arguments' => ['@templating.templates_dir']
+        'arguments' => ['@twig.templates_dir']
     ],
     'twig.framework_extension' => [
-        'class' => 'Perfumer\\View\\Extension\\Twig\\FrameworkExtension',
+        'class' => 'Perfumer\\View\\TwigExtension\\FrameworkExtension',
         'arguments' => ['container']
     ],
     'twig.assets_extension' => [
-        'class' => 'Perfumer\\View\\Extension\\Twig\\AssetsExtension',
+        'class' => 'Perfumer\\View\\TwigExtension\\AssetsExtension',
         'arguments' => ['#assets']
     ],
 
