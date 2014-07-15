@@ -98,34 +98,16 @@ return [
     ],
 
     // Auth
-    'auth.native' => [
+    'auth' => [
         'shared' => true,
         'class' => 'Perfumer\\Auth\\Core',
-        'arguments' => ['#session', '#session.cookie_provider', [
-            'update_gap' => '@auth.update_gap'
-        ]]
-    ],
-    'auth.api' => [
-        'shared' => true,
-        'class' => 'Perfumer\\Auth\\Core',
-        'arguments' => ['#session', '#session.header_provider', [
-            'update_gap' => '@auth.update_gap'
-        ]]
+        'arguments' => ['#session']
     ],
 
     // Session
-    'session.native' => [
+    'session' => [
         'shared' => true,
-        'class' => 'Perfumer\\Session\\NativeSession',
-        'arguments' => ['#cookie', '@auth.session_cookie_name', '@auth.session_cookie_lifetime']
-    ],
-    'session.cookie_provider' => [
-        'class' => 'Perfumer\\Session\\Token\\Provider\\CookieProvider',
-        'arguments' => ['@auth.session_cookie_name']
-    ],
-    'session.header_provider' => [
-        'class' => 'Perfumer\\Session\\Token\\Provider\\HeaderProvider',
-        'arguments' => ['@auth.api_token_name']
+        'class' => 'Symfony\\Component\\HttpFoundation\\Session\\Session'
     ],
 
     // Cache
