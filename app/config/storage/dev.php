@@ -21,6 +21,7 @@ return [
     'assets' => [
         'source_path' => APP_DIR . 'assets',
         'web_path' => WEB_DIR,
-        'combine' => false
+        'combine' => false,
+        'minify' => false
     ]
 ];
