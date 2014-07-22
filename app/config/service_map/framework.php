@@ -5,11 +5,17 @@ return [
     // Storage engines
     'storage.default' => [
         'shared' => true,
-        'class' => 'Perfumer\\Container\\Storage\\DefaultStorage'
+        'class' => 'Perfumer\\Container\\Storage\\DefaultStorage',
+        'arguments' => ['#arr']
     ],
     'storage.file' => [
         'shared' => true,
         'class' => 'Perfumer\\Container\\Storage\\FileStorage'
+    ],
+    'storage.mysql' => [
+        'shared' => true,
+        'class' => 'Perfumer\\Container\\Storage\\MysqlStorage',
+        'arguments' => ['#arr']
     ],
 
     // Requesting

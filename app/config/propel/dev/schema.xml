@@ -63,6 +63,17 @@
         </foreign-key>
     </table>
 
+    <table name="storage" phpName="Storage">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="name" type="varchar" size="255" required="true"/>
+        <column name="_group" phpName="Group" tableMapName="GROUP" type="varchar" size="255" required="true"/>
+        <column name="value" type="longvarchar" required="true"/>
+        <unique>
+            <unique-column name="name"/>
+            <unique-column name="_group"/>
+        </unique>
+    </table>
+
     <table name="i18n" phpName="I18n">
         <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
         <column name="name" type="varchar" size="255" required="true"/>

@@ -27,6 +27,7 @@ $container->registerServiceMap(APP_DIR . 'config/service_map/' . ENV . '.php');
 // Registering storage services
 $container->registerStorage('default', $container->getService('storage.default'));
 $container->registerStorage('file', $container->getService('storage.file'));
+$container->registerStorage('mysql', $container->getService('storage.mysql'));
 
 // Default shared file storage parameters
 $container->getService('storage.file')->registerFile(APP_DIR . 'config/storage/framework.php');
