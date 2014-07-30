@@ -15,8 +15,6 @@ class AjaxController extends TemplateController
     use ErrorsHelper;
     use ContentHelper;
 
-    protected $user;
-
     protected function before()
     {
         parent::before();
@@ -24,9 +22,9 @@ class AjaxController extends TemplateController
         if (!method_exists($this, $this->getCurrent()->getAction()))
             $this->getProxy()->forward('exception/json', 'pageNotFound');
 
-        $this->user = $this->getContainer()->s('auth')->getUser();
+        $this->_user = $this->getContainer()->s('auth')->getUser();
 
-        $this->getView()->addVar('user', $this->user, 'app');
+        $this->getView()->addVar('user', $this->getUser(), 'app');
 
         $this->statusBeforeFilter();
         $this->messageBeforeFilter();

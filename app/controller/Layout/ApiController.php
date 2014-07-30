@@ -17,7 +17,6 @@ class ApiController extends TemplateController
     use ContentHelper;
 
     protected $api_application;
-    protected $user;
 
     protected function before()
     {
@@ -36,9 +35,9 @@ class ApiController extends TemplateController
         if (!$this->api_application)
             $this->getProxy()->forward('exception/api', 'apiSecretInvalid');
 
-        $this->user = $this->getContainer()->s('auth.api')->getUser();
+        $this->_user = $this->getContainer()->s('auth.api')->getUser();
 
-        $this->getView()->addVar('user', $this->user, 'app');
+        $this->getView()->addVar('user', $this->getUser(), 'app');
 
         $this->statusBeforeFilter();
         $this->messageBeforeFilter();

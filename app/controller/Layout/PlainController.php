@@ -6,12 +6,10 @@ use Perfumer\Controller\CoreController;
 
 class PlainController extends CoreController
 {
-    protected $user;
-
     protected function before()
     {
         parent::before();
 
-        $this->user = $this->getContainer()->s('auth')->getUser();
+        $this->_user = $this->getContainer()->s('auth')->getUser();
     }
 }

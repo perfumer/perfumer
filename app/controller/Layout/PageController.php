@@ -6,8 +6,6 @@ use Perfumer\Controller\TemplateController;
 
 class PageController extends TemplateController
 {
-    protected $user;
-
     protected function before()
     {
         parent::before();
@@ -17,8 +15,8 @@ class PageController extends TemplateController
 
         $this->getView()->mapGroup('js', 'app');
 
-        $this->user = $this->getContainer()->s('auth')->getUser();
+        $this->_user = $this->getContainer()->s('auth')->getUser();
 
-        $this->getView()->addVar('user', $this->user, 'app');
+        $this->getView()->addVar('user', $this->getUser(), 'app');
     }
 }

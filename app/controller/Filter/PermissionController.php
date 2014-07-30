@@ -8,7 +8,7 @@ class PermissionController extends PlainController
 {
     public function isLogged($mode)
     {
-        if (!$this->user->isLogged())
+        if (!$this->getUser()->isLogged())
             $this->getProxy()->forward('exception/' . $mode, 'isLogged');
     }
 
@@ -16,7 +16,7 @@ class PermissionController extends PlainController
     {
         $this->isLogged($mode);
 
-        if (!$this->user->isAdmin())
+        if (!$this->getUser()->isAdmin())
             $this->getProxy()->forward('exception/' . $mode, 'isAdmin');
     }
 
@@ -24,7 +24,7 @@ class PermissionController extends PlainController
     {
         $this->isLogged($mode);
 
-        if (!$this->user->isGranted($permissions))
+        if (!$this->getUser()->isGranted($permissions))
             $this->getProxy()->forward('exception/' . $mode, 'isGranted');
     }
 }
