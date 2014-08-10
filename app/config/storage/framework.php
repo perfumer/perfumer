@@ -12,7 +12,8 @@ return [
 
     // Auth settings
     'auth' => [
-        'update_gap' => 3600
+        'update_gap' => 3600,
+        'pull_user' => false
     ],
 
     // LDAP settings
