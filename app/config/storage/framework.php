@@ -18,8 +18,9 @@ return [
 
     // LDAP settings
     'ldap' => [
-        'domain' => 'domain',
         'hostname' => 'ldap.example.com',
+        'port' => 636,
+        'domain' => 'example.com'
     ],
 
     // I18n settings

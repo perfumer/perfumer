@@ -119,6 +119,7 @@ return [
         'arguments' => ['#session', [
             'update_gap' => '@auth.update_gap',
             'ldap_hostname' => '@ldap.hostname',
+            'ldap_port' => '@ldap.port',
             'ldap_domain' => '@ldap.domain',
             'pull_user' => '@auth.pull_user'
         ]]
