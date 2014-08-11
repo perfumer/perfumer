@@ -12,9 +12,9 @@ return [
         'shared' => true,
         'class' => 'Perfumer\\Container\\Storage\\FileStorage'
     ],
-    'storage.mysql' => [
+    'storage.database' => [
         'shared' => true,
-        'class' => 'Perfumer\\Container\\Storage\\MysqlStorage',
+        'class' => 'Perfumer\\Container\\Storage\\DatabaseStorage',
         'arguments' => ['#arr']
     ],
 
