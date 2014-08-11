@@ -6,4 +6,7 @@
  * so you can overwrite any default framework services here.
  */
 return [
+    'auth' => [
+        'alias' => 'auth.database'
+    ],
 ];

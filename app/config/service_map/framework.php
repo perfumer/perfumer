@@ -105,10 +105,22 @@ return [
     ],
 
     // Auth
-    'auth' => [
+    'auth.database' => [
         'shared' => true,
-        'class' => 'Perfumer\\Auth\\Core',
-        'arguments' => ['#session']
+        'class' => 'Perfumer\\Auth\\Driver\\DatabaseDriver',
+        'arguments' => ['#session', [
+            'update_gap' => '@auth.update_gap'
+        ]]
+    ],
+
+    'auth.ldap' => [
+        'shared' => true,
+        'class' => 'Perfumer\\Auth\\Driver\\LdapDriver',
+        'arguments' => ['#session', [
+            'update_gap' => '@auth.update_gap',
+            'ldap_hostname' => '@ldap.hostname',
+            'ldap_domain' => '@ldap.domain'
+        ]]
     ],
 
     // Session
