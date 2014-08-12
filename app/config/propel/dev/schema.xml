@@ -68,6 +68,7 @@
         <column name="role_id" type="integer" required="true"/>
         <column name="model_name" type="varchar" size="255" required="true"/>
         <column name="model_ids" type="array" required="true"/>
+        <column name="type" type="integer" required="true" defaultValue="0"/>
         <foreign-key foreignTable="role" onDelete="CASCADE">
             <reference local="role_id" foreign="id"/>
         </foreign-key>
