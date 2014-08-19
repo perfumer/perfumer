@@ -99,7 +99,7 @@
         <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
         <column name="name" type="varchar" size="255" required="true"/>
         <column name="description" type="longvarchar"/>
-        <column name="purpose" type="integer"/>
+        <column name="purpose" type="integer" required="true" defaultValue="0"/>
         <column name="extension" type="varchar" size="255" required="true"/>
         <column name="model_id" type="integer"/>
         <column name="model_name" type="varchar" size="255"/>
