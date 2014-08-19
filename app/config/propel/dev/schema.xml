@@ -88,10 +88,36 @@
     <table name="i18n" phpName="I18n">
         <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
         <column name="name" type="varchar" size="255" required="true"/>
-        <column name="group" type="varchar" size="255" required="true"/>
+        <column name="_group" phpName="Group" tableMapName="GROUP" type="varchar" size="255" required="true"/>
         <column name="text" type="longvarchar" required="true"/>
         <behavior name="i18n">
             <parameter name="i18n_columns" value="text" />
         </behavior>
+    </table>
+
+    <table name="attachment" phpName="Attachment">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="name" type="varchar" size="255" required="true"/>
+        <column name="description" type="longvarchar"/>
+        <column name="purpose" type="integer"/>
+        <column name="extension" type="varchar" size="255" required="true"/>
+        <column name="model_id" type="integer"/>
+        <column name="model_name" type="varchar" size="255"/>
+        <column name="user_id" type="integer"/>
+        <column name="digest" type="varchar" size="255" required="true"/>
+        <column name="path" type="varchar" size="255" required="true"/>
+        <column name="content_type" type="varchar" size="255" required="true"/>
+        <column name="size" type="integer" required="true"/>
+        <behavior name="timestampable" />
+        <foreign-key foreignTable="user">
+            <reference local="user_id" foreign="id"/>
+        </foreign-key>
+        <unique>
+            <unique-column name="digest"/>
+        </unique>
+        <index>
+            <index-column name="model_id"/>
+            <index-column name="model_name"/>
+        </index>
     </table>
 </database>
