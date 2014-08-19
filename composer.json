@@ -18,7 +18,8 @@
         "symfony/http-foundation": "2.5.*",
         "tedivm/stash": "0.12.*",
         "kriswallsmith/assetic": "1.1.*",
-        "nitra/php-min": "*"
+        "nitra/php-min": "*",
+        "codeguy/upload": "*"
     },
     "autoload": {
         "psr-4": {
