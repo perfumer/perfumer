@@ -15,7 +15,6 @@
         "perfumer/perfumer": "dev-master",
         "propel/propel": "2.0.0-alpha3",
         "twig/twig": "1.*",
-        "symfony/http-foundation": "2.5.*",
         "tedivm/stash": "0.12.*",
         "kriswallsmith/assetic": "1.1.*",
         "nitra/php-min": "*",

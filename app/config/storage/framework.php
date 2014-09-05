@@ -12,14 +12,16 @@ return [
 
     // Auth settings
     'auth' => [
-        'update_gap' => 3600,
+        'cookie_lifetime' => 86400,
+        'session_lifetime' => 3600,
+        'update_gap' => 1800,
         'pull_user' => false
     ],
 
     // LDAP settings
     'ldap' => [
         'hostname' => 'ldap.example.com',
-        'port' => 636,
+        'port' => 389,
         'domain' => 'example.com'
     ],
 

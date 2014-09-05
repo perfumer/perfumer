@@ -3,19 +3,10 @@
 namespace App\Controller\Layout;
 
 use App\Model\ApiApplicationQuery;
-use Perfumer\Controller\Helper\ContentHelper;
-use Perfumer\Controller\Helper\ErrorsHelper;
-use Perfumer\Controller\Helper\MessageHelper;
-use Perfumer\Controller\Helper\StatusHelper;
-use Perfumer\Controller\TemplateController;
+use Perfumer\Controller\JsonController;
 
-class ApiController extends TemplateController
+class ApiController extends JsonController
 {
-    use StatusHelper;
-    use MessageHelper;
-    use ErrorsHelper;
-    use ContentHelper;
-
     protected $api_application;
 
     protected function before()
@@ -36,24 +27,5 @@ class ApiController extends TemplateController
             $this->getProxy()->forward('exception/api', 'apiSecretInvalid');
 
         $this->_user = $this->getContainer()->s('auth.api')->getUser();
-
-        $this->getView()->addVar('user', $this->getUser(), 'app');
-
-        $this->statusBeforeFilter();
-        $this->messageBeforeFilter();
-        $this->errorsBeforeFilter();
-        $this->contentBeforeFilter();
-    }
-
-    protected function after()
-    {
-        $this->errorStatusAfterFilter();
-        $this->statusMessageAfterFilter();
-        $this->errorsAfterFilter();
-        $this->contentAfterFilter();
-
-        $this->getView()->setTemplateIfNotDefined('layout/json');
-
-        parent::after();
     }
 }

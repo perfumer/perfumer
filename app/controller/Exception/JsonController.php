@@ -2,23 +2,10 @@
 
 namespace App\Controller\Exception;
 
-use Perfumer\Controller\Helper\MessageHelper;
-use Perfumer\Controller\Helper\StatusHelper;
-use Perfumer\Controller\TemplateController;
+use Perfumer\Controller\JsonController as BaseController;
 
-class JsonController extends TemplateController
+class JsonController extends BaseController
 {
-    use StatusHelper;
-    use MessageHelper;
-
-    protected function before()
-    {
-        parent::before();
-
-        $this->statusBeforeFilter();
-        $this->messageBeforeFilter();
-    }
-
     public function pageNotFound()
     {
         $this->setErrorMessage('Page not found.');
@@ -37,15 +24,5 @@ class JsonController extends TemplateController
     public function isGranted()
     {
         $this->setErrorMessage('You do not have enough rights to access this page.');
-    }
-
-    protected function after()
-    {
-        $this->errorStatusAfterFilter();
-        $this->statusMessageAfterFilter();
-
-        $this->getView()->setTemplateIfNotDefined('layout/json');
-
-        parent::after();
     }
 }

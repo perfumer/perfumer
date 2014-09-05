@@ -108,7 +108,7 @@ return [
     'auth.database' => [
         'shared' => true,
         'class' => 'Perfumer\\Auth\\Driver\\DatabaseDriver',
-        'arguments' => ['#session', [
+        'arguments' => ['#session', '#auth.token.cookie_handler', [
             'update_gap' => '@auth.update_gap'
         ]]
     ],
@@ -116,7 +116,7 @@ return [
     'auth.ldap' => [
         'shared' => true,
         'class' => 'Perfumer\\Auth\\Driver\\LdapDriver',
-        'arguments' => ['#session', [
+        'arguments' => ['#session', '#auth.token.cookie_handler', [
             'update_gap' => '@auth.update_gap',
             'ldap_hostname' => '@ldap.hostname',
             'ldap_port' => '@ldap.port',
@@ -125,10 +125,19 @@ return [
         ]]
     ],
 
+    'auth.token.cookie_handler' => [
+        'shared' => true,
+        'class' => 'Perfumer\\Auth\\TokenHandler\\CookieHandler',
+        'arguments' => ['#cookie', '@auth.cookie_lifetime']
+    ],
+
     // Session
     'session' => [
         'shared' => true,
-        'class' => 'Symfony\\Component\\HttpFoundation\\Session\\Session'
+        'class' => 'Perfumer\\Session\\Core',
+        'arguments' => ['#cache.memcache', [
+            'lifetime' => '@auth.session_lifetime'
+        ]]
     ],
 
     // Cache
