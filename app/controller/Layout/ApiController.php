@@ -8,7 +8,7 @@ use Perfumer\Controller\JsonController;
 class ApiController extends JsonController
 {
     protected $_auth_service_name = 'auth.api';
-    
+
     protected $api_application;
 
     protected function before()

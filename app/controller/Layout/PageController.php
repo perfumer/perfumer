@@ -10,6 +10,6 @@ class PageController extends TemplateController
     {
         parent::before();
 
-        $this->getView()->mapGroup('js', 'app');
+        $this->getView()->mapGroup('vars', 'app');
     }
 }

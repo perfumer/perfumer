@@ -2,9 +2,9 @@
 
 namespace App\Controller\Exception;
 
-use App\Controller\Layout\PageController;
+use App\Controller\Layout\PageController as BaseController;
 
-class HtmlController extends PageController
+class PageController extends BaseController
 {
     public function pageNotFound()
     {
