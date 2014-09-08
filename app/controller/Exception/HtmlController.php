@@ -10,6 +10,14 @@ class HtmlController extends PageController
     {
     }
 
+    public function controllerNotFound()
+    {
+    }
+
+    public function actionNotFound()
+    {
+    }
+
     public function isLogged()
     {
     }

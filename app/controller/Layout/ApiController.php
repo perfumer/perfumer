@@ -7,14 +7,13 @@ use Perfumer\Controller\JsonController;
 
 class ApiController extends JsonController
 {
+    protected $_auth_service_name = 'auth.api';
+    
     protected $api_application;
 
     protected function before()
     {
         parent::before();
-
-        if (!method_exists($this, $this->getCurrent()->getAction()))
-            $this->getProxy()->forward('exception/json', 'pageNotFound');
 
         $secret_header = 'HTTP_' . $this->getContainer()->p('auth.api_secret_name');
 
@@ -25,7 +24,5 @@ class ApiController extends JsonController
 
         if (!$this->api_application)
             $this->getProxy()->forward('exception/api', 'apiSecretInvalid');
-
-        $this->_user = $this->getContainer()->s('auth.api')->getUser();
     }
 }
