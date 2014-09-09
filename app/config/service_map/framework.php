@@ -95,7 +95,7 @@ return [
     // Assets
     'assets' => [
         'shared' => true,
-        'class' => 'Perfumer\\Assets',
+        'class' => 'Perfumer\\Assets\\Core',
         'arguments' => [[
             'source_path' => '@assets.source_path',
             'web_path' => '@assets.web_path',

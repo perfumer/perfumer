@@ -15,7 +15,7 @@ class ApiController extends JsonController
     {
         parent::before();
 
-        $secret_header = 'HTTP_' . $this->getContainer()->p('auth.api_secret_name');
+        $secret_header = 'HTTP_' . $this->getContainer()->getParam('auth.api_secret_name');
 
         if (!isset($_SERVER[$secret_header]))
             $this->getProxy()->forward('exception/api', 'apiSecretRequired');
