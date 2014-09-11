@@ -74,8 +74,8 @@ return [
             'debug' => '@twig.debug'
         ]],
         'after' => function(\Perfumer\Container\Core $container, \Twig_Environment $twig) {
-            $twig->addExtension($container->s('twig.framework_extension'));
-            $twig->addExtension($container->s('twig.assets_extension'));
+            $twig->addExtension($container->getService('twig.framework_extension'));
+            $twig->addExtension($container->getService('twig.assets_extension'));
         }
     ],
     'twig.loader' => [
