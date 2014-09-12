@@ -172,6 +172,12 @@ return [
         ]]
     ],
 
+    // Validation
+    'validation' => [
+        'class' => 'Perfumer\\Validation\\Core',
+        'arguments' => ['#i18n']
+    ],
+
     // Validator
     'validator' => [
         'class' => 'Perfumer\\Validator\\Core',
