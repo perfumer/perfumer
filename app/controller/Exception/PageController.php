@@ -8,25 +8,31 @@ class PageController extends BaseController
 {
     public function pageNotFound()
     {
+        $this->getResponse()->setStatusCode(404);
     }
 
     public function controllerNotFound()
     {
+        $this->getResponse()->setStatusCode(404);
     }
 
     public function actionNotFound()
     {
+        $this->getResponse()->setStatusCode(405);
     }
 
     public function isLogged()
     {
+        $this->getResponse()->setStatusCode(403);
     }
 
     public function isAdmin()
     {
+        $this->getResponse()->setStatusCode(403);
     }
 
     public function isGranted()
     {
+        $this->getResponse()->setStatusCode(403);
     }
 }

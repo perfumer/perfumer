@@ -8,11 +8,15 @@ class ApiController extends JsonController
 {
     public function apiSecretRequired()
     {
+        $this->getResponse()->setStatusCode(403);
+        
         $this->setErrorMessage('You are required to provide application secret key to get access to API.');
     }
 
     public function apiSecretInvalid()
     {
+        $this->getResponse()->setStatusCode(403);
+
         $this->setErrorMessage('Invalid application secret key.');
     }
 }
