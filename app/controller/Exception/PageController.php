@@ -35,4 +35,9 @@ class PageController extends BaseController
     {
         $this->getResponse()->setStatusCode(403);
     }
+
+    public function redirect($url, $status_code)
+    {
+        $this->getResponse()->setStatusCode($status_code)->headers->set('Location', '/' . ltrim($url, '/'));
+    }
 }
