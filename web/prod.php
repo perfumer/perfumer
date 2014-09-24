@@ -6,4 +6,4 @@ define('ENV', 'prod');
 require '../app/bootstrap.php';
 
 // Executing request
-echo $container->getService('proxy')->start()->sendHeaders()->getBody();
+$container->getService('proxy')->start()->send();

@@ -29,7 +29,7 @@ return [
         'arguments' => ['container']
     ],
     'response' => [
-        'class' => 'Perfumer\\Proxy\\Response'
+        'class' => 'Symfony\Component\HttpFoundation\\Response'
     ],
 
     // Propel ORM
@@ -175,12 +175,6 @@ return [
     // Validation
     'validation' => [
         'class' => 'Perfumer\\Validation\\Core',
-        'arguments' => ['#i18n']
-    ],
-
-    // Validator
-    'validator' => [
-        'class' => 'Perfumer\\Validator\\Core',
         'arguments' => ['#i18n']
     ],
 
