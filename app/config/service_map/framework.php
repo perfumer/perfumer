@@ -25,8 +25,7 @@ return [
         'arguments' => ['container']
     ],
     'request' => [
-        'class' => 'Perfumer\\Proxy\\Request',
-        'arguments' => ['container']
+        'class' => 'Perfumer\\Proxy\\Request'
     ],
     'response' => [
         'class' => 'Symfony\Component\HttpFoundation\\Response'
