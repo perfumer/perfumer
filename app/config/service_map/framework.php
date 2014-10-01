@@ -177,6 +177,11 @@ return [
         'arguments' => ['#i18n']
     ],
 
+    // Console
+    'console' => [
+        'class' => 'Perfumer\\Console\\Core',
+    ],
+
     // Helper services
     'arr' => [
         'shared' => true,

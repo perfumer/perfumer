@@ -14,6 +14,7 @@
     "require": {
         "perfumer/perfumer": "dev-master",
         "symfony/http-foundation": "2.*",
+        "symfony/console": "2.*",
         "propel/propel": "2.0.0-alpha3",
         "twig/twig": "1.*",
         "tedivm/stash": "0.12.*",
