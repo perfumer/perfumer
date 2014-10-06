@@ -73,9 +73,6 @@
             <reference local="role_id" foreign="id"/>
         </foreign-key>
         <index>
-            <index-column name="role_id"/>
-        </index>
-        <index>
             <index-column name="model_name"/>
             <index-column name="model_id"/>
         </index>

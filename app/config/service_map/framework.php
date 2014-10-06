@@ -178,8 +178,26 @@ return [
     ],
 
     // Console
-    'console' => [
-        'class' => 'Perfumer\\Console\\Core',
+    'console.application' => [
+        'shared' => true,
+        'class' => 'Perfumer\\Console\\Application',
+        'arguments' => ['#console.single_application_command']
+    ],
+
+    'console.single_application_command' => [
+        'shared' => true,
+        'class' => 'Perfumer\\Console\\SingleApplicationCommand',
+        'arguments' => ['#console.proxy']
+    ],
+
+    'console.proxy' => [
+        'shared' => true,
+        'class' => 'Perfumer\\Console\\Proxy',
+        'arguments' => ['container']
+    ],
+
+    'console.request' => [
+        'class' => 'Perfumer\\Console\\Request'
     ],
 
     // Helper services
