@@ -111,7 +111,7 @@
         <column name="digest" type="varchar" size="255" required="true"/>
         <column name="path" type="varchar" size="255" required="true"/>
         <column name="content_type" type="varchar" size="255" required="true"/>
-        <column name="size" type="integer" required="true"/>
+        <column name="size" type="bigint" required="true" defaultValue="0"/>
         <behavior name="timestampable" />
         <foreign-key foreignTable="user">
             <reference local="user_id" foreign="id"/>
