@@ -162,19 +162,19 @@ return [
         'class' => 'Stash\\Driver\\Ephemeral'
     ],
 
-    // I18n
-    'i18n' => [
+    // Translator
+    'translator' => [
         'shared' => true,
-        'class' => 'Perfumer\\I18n\\Core',
+        'class' => 'Perfumer\\Translator\\Core',
         'arguments' => ['#cache', [
-            'locale' => '@i18n.default_locale'
+            'locale' => '@translator.default_locale'
         ]]
     ],
 
     // Validation
     'validation' => [
         'class' => 'Perfumer\\Validation\\Core',
-        'arguments' => ['#i18n']
+        'arguments' => ['#translator']
     ],
 
     // Console

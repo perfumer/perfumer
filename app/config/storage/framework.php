@@ -25,8 +25,8 @@ return [
         'domain' => 'example.com'
     ],
 
-    // I18n settings
-    'i18n' => [
+    // Translator settings
+    'translator' => [
         'default_locale' => 'en'
     ],
 ];
