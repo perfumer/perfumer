@@ -21,6 +21,7 @@
     <table name="role" phpName="Role">
         <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
         <column name="name" type="varchar" size="255" required="true"/>
+        <column name="modifier" type="integer" required="true" defaultValue="0"/>
     </table>
 
     <table name="role_permission" isCrossRef="true">
@@ -68,7 +69,7 @@
         <column name="role_id" type="integer" required="true"/>
         <column name="model_name" type="varchar" size="255" required="true"/>
         <column name="model_id" type="integer" required="true"/>
-        <column name="type" type="integer" required="true" defaultValue="0"/>
+        <column name="modifier" type="integer" required="true" defaultValue="0"/>
         <foreign-key foreignTable="role" onDelete="CASCADE">
             <reference local="role_id" foreign="id"/>
         </foreign-key>
@@ -103,18 +104,18 @@
         <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
         <column name="name" type="varchar" size="255" required="true"/>
         <column name="description" type="longvarchar"/>
-        <column name="purpose" type="integer" required="true" defaultValue="0"/>
+        <column name="modifier" type="integer" required="true" defaultValue="0"/>
         <column name="extension" type="varchar" size="255" required="true"/>
         <column name="model_id" type="integer"/>
         <column name="model_name" type="varchar" size="255"/>
-        <column name="user_id" type="integer"/>
+        <column name="creator_id" type="integer"/>
         <column name="digest" type="varchar" size="255" required="true"/>
         <column name="path" type="varchar" size="255" required="true"/>
         <column name="content_type" type="varchar" size="255" required="true"/>
         <column name="size" type="bigint" required="true" defaultValue="0"/>
         <behavior name="timestampable" />
         <foreign-key foreignTable="user">
-            <reference local="user_id" foreign="id"/>
+            <reference local="creator_id" foreign="id"/>
         </foreign-key>
         <unique>
             <unique-column name="digest"/>
