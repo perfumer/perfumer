@@ -5,102 +5,15 @@
         <parameter name="Charset" value="utf8"/>
     </vendor>
 
-    <table name="api_application" phpName="ApiApplication">
+    <!-- Perfumer default model schemas -->
+    <table name="_application" phpName="Application">
         <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
         <column name="name" type="varchar" size="255" required="true"/>
         <column name="description" type="longvarchar"/>
         <column name="token" type="varchar" size="255" required="true"/>
     </table>
 
-    <table name="permission" phpName="Permission">
-        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
-        <column name="name" type="varchar" size="255" required="true"/>
-        <column name="token" type="varchar" size="255" required="true"/>
-    </table>
-
-    <table name="role" phpName="Role">
-        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
-        <column name="name" type="varchar" size="255" required="true"/>
-        <column name="modifier" type="integer" required="true" defaultValue="0"/>
-    </table>
-
-    <table name="role_permission" isCrossRef="true">
-        <column name="role_id" type="integer" primaryKey="true"/>
-        <column name="permission_id" type="integer" primaryKey="true"/>
-        <foreign-key foreignTable="role">
-            <reference local="role_id" foreign="id" onDelete="CASCADE"/>
-        </foreign-key>
-        <foreign-key foreignTable="permission">
-            <reference local="permission_id" foreign="id" onDelete="CASCADE"/>
-        </foreign-key>
-    </table>
-
-    <table name="token" phpName="Token">
-        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
-        <column name="token" type="varchar" size="255" required="true"/>
-        <column name="user_id" type="integer" required="true"/>
-        <foreign-key foreignTable="user" phpName="User" onDelete="CASCADE">
-            <reference local="user_id" foreign="id"/>
-        </foreign-key>
-        <behavior name="timestampable" />
-    </table>
-
-    <table name="user" phpName="User">
-        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
-        <column name="username" type="varchar" size="255" required="true"/>
-        <column name="password" type="varchar" size="255" required="true"/>
-        <column name="is_admin" type="boolean" required="true" defaultValue="false"/>
-        <behavior name="timestampable" />
-    </table>
-
-    <table name="user_role" isCrossRef="true">
-        <column name="user_id" type="integer" primaryKey="true"/>
-        <column name="role_id" type="integer" primaryKey="true"/>
-        <foreign-key foreignTable="user">
-            <reference local="user_id" foreign="id" onDelete="CASCADE"/>
-        </foreign-key>
-        <foreign-key foreignTable="role">
-            <reference local="role_id" foreign="id" onDelete="CASCADE"/>
-        </foreign-key>
-    </table>
-
-    <table name="delegation" phpName="Delegation">
-        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
-        <column name="role_id" type="integer" required="true"/>
-        <column name="model_name" type="varchar" size="255" required="true"/>
-        <column name="model_id" type="integer" required="true"/>
-        <column name="modifier" type="integer" required="true" defaultValue="0"/>
-        <foreign-key foreignTable="role" onDelete="CASCADE">
-            <reference local="role_id" foreign="id"/>
-        </foreign-key>
-        <index>
-            <index-column name="model_name"/>
-            <index-column name="model_id"/>
-        </index>
-    </table>
-
-    <table name="storage" phpName="Storage">
-        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
-        <column name="name" type="varchar" size="255" required="true"/>
-        <column name="_group" phpName="Group" tableMapName="GROUP" type="varchar" size="255" required="true"/>
-        <column name="value" type="longvarchar" required="true"/>
-        <unique>
-            <unique-column name="name"/>
-            <unique-column name="_group"/>
-        </unique>
-    </table>
-
-    <table name="translation" phpName="Translation">
-        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
-        <column name="name" type="varchar" size="255" required="true"/>
-        <column name="_group" phpName="Group" tableMapName="GROUP" type="varchar" size="255" required="true"/>
-        <column name="text" type="longvarchar" required="true"/>
-        <behavior name="i18n">
-            <parameter name="i18n_columns" value="text" />
-        </behavior>
-    </table>
-
-    <table name="attachment" phpName="Attachment">
+    <table name="_attachment" phpName="Attachment">
         <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
         <column name="name" type="varchar" size="255" required="true"/>
         <column name="description" type="longvarchar"/>
@@ -114,7 +27,7 @@
         <column name="content_type" type="varchar" size="255" required="true"/>
         <column name="size" type="bigint" required="true" defaultValue="0"/>
         <behavior name="timestampable" />
-        <foreign-key foreignTable="user">
+        <foreign-key foreignTable="_user">
             <reference local="creator_id" foreign="id"/>
         </foreign-key>
         <unique>
@@ -125,4 +38,93 @@
             <index-column name="model_name"/>
         </index>
     </table>
+
+    <table name="_delegation" phpName="Delegation">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="role_id" type="integer" required="true"/>
+        <column name="model_name" type="varchar" size="255" required="true"/>
+        <column name="model_id" type="integer" required="true"/>
+        <column name="modifier" type="integer" required="true" defaultValue="0"/>
+        <foreign-key foreignTable="_role" onDelete="CASCADE">
+            <reference local="role_id" foreign="id"/>
+        </foreign-key>
+        <index>
+            <index-column name="model_name"/>
+            <index-column name="model_id"/>
+        </index>
+    </table>
+
+    <table name="_permission" phpName="Permission">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="name" type="varchar" size="255" required="true"/>
+        <column name="token" type="varchar" size="255" required="true"/>
+    </table>
+
+    <table name="_role" phpName="Role">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="name" type="varchar" size="255" required="true"/>
+        <column name="modifier" type="integer" required="true" defaultValue="0"/>
+    </table>
+
+    <table name="_role_permission" isCrossRef="true">
+        <column name="role_id" type="integer" primaryKey="true"/>
+        <column name="permission_id" type="integer" primaryKey="true"/>
+        <foreign-key foreignTable="_role">
+            <reference local="role_id" foreign="id" onDelete="CASCADE"/>
+        </foreign-key>
+        <foreign-key foreignTable="_permission">
+            <reference local="permission_id" foreign="id" onDelete="CASCADE"/>
+        </foreign-key>
+    </table>
+
+    <table name="_storage" phpName="Storage">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="name" type="varchar" size="255" required="true"/>
+        <column name="_group" phpName="Group" tableMapName="GROUP" type="varchar" size="255" required="true"/>
+        <column name="value" type="longvarchar" required="true"/>
+        <unique>
+            <unique-column name="name"/>
+            <unique-column name="_group"/>
+        </unique>
+    </table>
+
+    <table name="_token" phpName="Token">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="token" type="varchar" size="255" required="true"/>
+        <column name="user_id" type="integer" required="true"/>
+        <foreign-key foreignTable="_user" phpName="User" onDelete="CASCADE">
+            <reference local="user_id" foreign="id"/>
+        </foreign-key>
+        <behavior name="timestampable" />
+    </table>
+
+    <table name="_translation" phpName="Translation">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="name" type="varchar" size="255" required="true"/>
+        <column name="_group" phpName="Group" tableMapName="GROUP" type="varchar" size="255" required="true"/>
+        <column name="text" type="longvarchar" required="true"/>
+        <behavior name="i18n">
+            <parameter name="i18n_columns" value="text" />
+        </behavior>
+    </table>
+
+    <table name="_user" phpName="User">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="username" type="varchar" size="255" required="true"/>
+        <column name="password" type="varchar" size="255" required="true"/>
+        <column name="is_admin" type="boolean" required="true" defaultValue="false"/>
+        <behavior name="timestampable" />
+    </table>
+
+    <table name="_user_role" isCrossRef="true">
+        <column name="user_id" type="integer" primaryKey="true"/>
+        <column name="role_id" type="integer" primaryKey="true"/>
+        <foreign-key foreignTable="_user">
+            <reference local="user_id" foreign="id" onDelete="CASCADE"/>
+        </foreign-key>
+        <foreign-key foreignTable="_role">
+            <reference local="role_id" foreign="id" onDelete="CASCADE"/>
+        </foreign-key>
+    </table>
+    <!-- Perfumer default model schemas -->
 </database>
