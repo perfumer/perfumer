@@ -35,7 +35,7 @@ return [
     'propel.service_container' => [
         'shared' => true,
         'class' => 'Propel\\Runtime\\Propel',
-        'static_init' => 'getServiceContainer',
+        'static' => 'getServiceContainer',
         'after' => function(\Perfumer\Container\Core $container, $service_container) {
             $project = $container->getParam('propel.project');
             $database = $container->getParam('propel.database');
