@@ -106,7 +106,7 @@ return [
     // Auth
     'auth.database' => [
         'shared' => true,
-        'class' => 'Perfumer\\Auth\\Driver\\DatabaseDriver',
+        'class' => 'Perfumer\\Auth\\Authorization\\DatabaseAuthorization',
         'arguments' => ['#session', '#auth.token.cookie_handler', [
             'update_gap' => '@auth.update_gap'
         ]]
@@ -114,7 +114,7 @@ return [
 
     'auth.ldap' => [
         'shared' => true,
-        'class' => 'Perfumer\\Auth\\Driver\\LdapDriver',
+        'class' => 'Perfumer\\Auth\\Authorization\\LdapAuthorization',
         'arguments' => ['#session', '#auth.token.cookie_handler', [
             'update_gap' => '@auth.update_gap',
             'ldap_hostname' => '@ldap.hostname',
