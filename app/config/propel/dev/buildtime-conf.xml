@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
     <propel>
-        <datasources default="dev">
-            <datasource id="dev">
+        <datasources default="example">
+            <datasource id="example">
                 <adapter>mysql</adapter>
                 <connection>
-                    <dsn>mysql:host=localhost;dbname=dev</dsn>
+                    <dsn>mysql:host=localhost;dbname=example</dsn>
                     <user>user</user>
                     <password>password</password>
                     <settings>
