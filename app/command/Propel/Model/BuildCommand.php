@@ -8,6 +8,6 @@ class BuildCommand extends CoreCommand
 {
     public function action()
     {
-        $this->getOutput()->writeln(shell_exec('vendor/bin/propel model:build --input-dir=app/config/propel/dev --output-dir=app/model'));
+        $this->getOutput()->writeln(shell_exec('vendor/bin/propel model:build --schema-dir=app/config/propel/schema --recursive --config-dir=app/config/propel/dev --output-dir=app/model'));
     }
 }

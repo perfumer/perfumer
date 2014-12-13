@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
     <propel>
-        <datasources default="example">
-            <datasource id="example">
-                <adapter>mysql</adapter>
-                <connection>
+        <database>
+            <connections>
+                <connection id="example">
+                    <adapter>mysql</adapter>
                     <dsn>mysql:host=localhost;dbname=example</dsn>
                     <user>user</user>
                     <password>password</password>
@@ -12,7 +12,7 @@
                         <setting id="charset">utf8</setting>
                     </settings>
                 </connection>
-            </datasource>
-        </datasources>
+            </connections>
+        </database>
     </propel>
 </config>
