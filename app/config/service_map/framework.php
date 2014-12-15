@@ -5,8 +5,7 @@ return [
     // Storage engines
     'storage.default' => [
         'shared' => true,
-        'class' => 'Perfumer\\Container\\Storage\\DefaultStorage',
-        'arguments' => ['#arr']
+        'class' => 'Perfumer\\Container\\Storage\\DefaultStorage'
     ],
     'storage.file' => [
         'shared' => true,
@@ -14,8 +13,7 @@ return [
     ],
     'storage.database' => [
         'shared' => true,
-        'class' => 'Perfumer\\Container\\Storage\\DatabaseStorage',
-        'arguments' => ['#arr']
+        'class' => 'Perfumer\\Container\\Storage\\DatabaseStorage'
     ],
 
     // Requesting
