@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database name="example" defaultIdMethod="native" namespace="App\Model">
+    <vendor type="mysql">
+        <parameter name="Engine" value="InnoDB"/>
+        <parameter name="Charset" value="utf8"/>
+    </vendor>
+
+    <!-- Describe your application tables here -->
+    <!-- Describe your application tables here -->
+</database>
