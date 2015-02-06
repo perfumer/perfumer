@@ -69,11 +69,11 @@
     <table name="_role_permission" isCrossRef="true">
         <column name="role_id" type="integer" primaryKey="true"/>
         <column name="permission_id" type="integer" primaryKey="true"/>
-        <foreign-key foreignTable="_role">
-            <reference local="role_id" foreign="id" onDelete="CASCADE"/>
+        <foreign-key foreignTable="_role" onDelete="CASCADE">
+            <reference local="role_id" foreign="id"/>
         </foreign-key>
-        <foreign-key foreignTable="_permission">
-            <reference local="permission_id" foreign="id" onDelete="CASCADE"/>
+        <foreign-key foreignTable="_permission" onDelete="CASCADE">
+            <reference local="permission_id" foreign="id"/>
         </foreign-key>
     </table>
 
@@ -95,6 +95,9 @@
         <foreign-key foreignTable="_user" phpName="User" onDelete="CASCADE">
             <reference local="user_id" foreign="id"/>
         </foreign-key>
+        <unique>
+            <unique-column name="token"/>
+        </unique>
         <behavior name="timestampable" />
     </table>
 
@@ -103,6 +106,10 @@
         <column name="name" type="varchar" size="255" required="true"/>
         <column name="_group" phpName="Group" tableMapName="GROUP" type="varchar" size="255" required="true"/>
         <column name="text" type="longvarchar" required="true"/>
+        <unique>
+            <unique-column name="name"/>
+            <unique-column name="_group"/>
+        </unique>
         <behavior name="i18n">
             <parameter name="i18n_columns" value="text" />
         </behavior>
@@ -113,17 +120,26 @@
         <column name="username" type="varchar" size="255" required="true"/>
         <column name="password" type="varchar" size="255" required="true"/>
         <column name="is_admin" type="boolean" required="true" defaultValue="false"/>
+        <column name="group_name" type="varchar" size="255"/>
+        <column name="group_id" type="integer"/>
+        <unique>
+            <unique-column name="username"/>
+        </unique>
+        <index>
+            <index-column name="group_name"/>
+            <index-column name="group_id"/>
+        </index>
         <behavior name="timestampable" />
     </table>
 
     <table name="_user_role" isCrossRef="true">
         <column name="user_id" type="integer" primaryKey="true"/>
         <column name="role_id" type="integer" primaryKey="true"/>
-        <foreign-key foreignTable="_user">
-            <reference local="user_id" foreign="id" onDelete="CASCADE"/>
+        <foreign-key foreignTable="_user" onDelete="CASCADE">
+            <reference local="user_id" foreign="id"/>
         </foreign-key>
-        <foreign-key foreignTable="_role">
-            <reference local="role_id" foreign="id" onDelete="CASCADE"/>
+        <foreign-key foreignTable="_role" onDelete="CASCADE">
+            <reference local="role_id" foreign="id"/>
         </foreign-key>
     </table>
     <!-- Perfumer default model schemas -->
