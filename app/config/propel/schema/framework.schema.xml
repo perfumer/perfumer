@@ -26,6 +26,7 @@
         <column name="path" type="varchar" size="255" required="true"/>
         <column name="content_type" type="varchar" size="255" required="true"/>
         <column name="size" type="bigint" required="true" defaultValue="0"/>
+        <column name="version" type="integer" required="true" defaultValue="1"/>
         <behavior name="timestampable" />
         <foreign-key foreignTable="_user">
             <reference local="creator_id" foreign="id"/>
