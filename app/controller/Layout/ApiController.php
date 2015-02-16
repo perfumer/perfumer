@@ -3,9 +3,9 @@
 namespace App\Controller\Layout;
 
 use App\Model\ApplicationQuery;
-use Perfumer\Controller\JsonController;
+use Perfumer\Controller\SerializeController;
 
-class ApiController extends JsonController
+class ApiController extends SerializeController
 {
     protected $_auth_service_name = 'auth.api';
 

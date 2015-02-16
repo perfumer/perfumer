@@ -2,9 +2,9 @@
 
 namespace App\Controller\Exception;
 
-use Perfumer\Controller\JsonController as BaseController;
+use Perfumer\Controller\SerializeController;
 
-class JsonController extends BaseController
+class JsonController extends SerializeController
 {
     public function pageNotFound()
     {

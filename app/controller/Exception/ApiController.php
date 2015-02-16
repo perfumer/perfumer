@@ -2,14 +2,14 @@
 
 namespace App\Controller\Exception;
 
-use Perfumer\Controller\JsonController;
+use Perfumer\Controller\SerializeController;
 
-class ApiController extends JsonController
+class ApiController extends SerializeController
 {
     public function apiSecretRequired()
     {
         $this->getResponse()->setStatusCode(403);
-        
+
         $this->setErrorMessage('You are required to provide application secret key to get access to API.');
     }
 

@@ -2,8 +2,8 @@
 
 namespace App\Controller\Layout;
 
-use Perfumer\Controller\JsonController;
+use Perfumer\Controller\SerializeController;
 
-class AjaxController extends JsonController
+class AjaxController extends SerializeController
 {
 }
