@@ -9,7 +9,9 @@ define('APP_DIR', ROOT_DIR . 'app/');
 define('TMP_DIR', ROOT_DIR . 'tmp/');
 define('VENDOR_DIR', ROOT_DIR . 'vendor/');
 define('WEB_DIR', ROOT_DIR . 'web/');
-define('ATTACHMENTS_DIR', WEB_DIR . 'attachments/');
+define('FILES_DIR', ROOT_DIR . 'files/');
+define('FILES_TMP_DIR', TMP_DIR . 'files/');
+define('FILES_CACHE_DIR', WEB_DIR . 'files/');
 
 // Composer autoloader
 require VENDOR_DIR . 'autoload.php';
