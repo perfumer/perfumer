@@ -30,5 +30,8 @@
             "App\\Model\\": "app/model/",
             "App\\Service\\": "app/service/"
         }
+    },
+    "config": {
+        "preferred-install": "dist"
     }
 }
