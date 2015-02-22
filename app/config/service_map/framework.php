@@ -85,7 +85,7 @@ return [
         'arguments' => ['container']
     ],
     'twig.assets_extension' => [
-        'class' => 'Perfumer\\MVC\\View\\TwigExtension\\AssetsExtension',
+        'class' => 'Perfumer\\Component\\Assets\\TwigExtension',
         'arguments' => ['#assets']
     ],
 
