@@ -5,25 +5,25 @@ return [
     // Storage engines
     'storage.default' => [
         'shared' => true,
-        'class' => 'Perfumer\\Container\\Storage\\DefaultStorage'
+        'class' => 'Perfumer\\Component\\Container\\Storage\\DefaultStorage'
     ],
     'storage.file' => [
         'shared' => true,
-        'class' => 'Perfumer\\Container\\Storage\\FileStorage'
+        'class' => 'Perfumer\\Component\\Container\\Storage\\FileStorage'
     ],
     'storage.database' => [
         'shared' => true,
-        'class' => 'Perfumer\\Container\\Storage\\DatabaseStorage'
+        'class' => 'Perfumer\\Component\\Container\\Storage\\DatabaseStorage'
     ],
 
     // Requesting
     'proxy' => [
         'shared' => true,
-        'class' => 'Perfumer\\Proxy\\Core',
+        'class' => 'Perfumer\\MVC\\Proxy\\Core',
         'arguments' => ['container']
     ],
     'request' => [
-        'class' => 'Perfumer\\Proxy\\Request'
+        'class' => 'Perfumer\\MVC\\Proxy\\Request'
     ],
     'response' => [
         'class' => 'Symfony\Component\HttpFoundation\\Response'
@@ -34,7 +34,7 @@ return [
         'shared' => true,
         'class' => 'Propel\\Runtime\\Propel',
         'static' => 'getServiceContainer',
-        'after' => function(\Perfumer\Container\Core $container, $service_container) {
+        'after' => function(\Perfumer\Component\Container\Core $container, $service_container) {
             $project = $container->getParam('propel.project');
             $database = $container->getParam('propel.database');
             $connection_manager = $container->getService('propel.connection_manager');
@@ -44,7 +44,7 @@ return [
     ],
     'propel.connection_manager' => [
         'class' => 'Propel\\Runtime\\Connection\\ConnectionManagerSingle',
-        'after' => function(\Perfumer\Container\Core $container, \Propel\Runtime\Connection\ConnectionManagerSingle $connection_manager) {
+        'after' => function(\Perfumer\Component\Container\Core $container, \Propel\Runtime\Connection\ConnectionManagerSingle $connection_manager) {
             $connection_manager->setConfiguration([
                 'dsn' => $container->getParam('propel.dsn'),
                 'user' => $container->getParam('propel.db_user'),
@@ -58,7 +58,7 @@ return [
 
     // View
     'view' => [
-        'class' => 'Perfumer\\View\\Core',
+        'class' => 'Perfumer\\MVC\\View\\Core',
         'arguments' => ['#twig']
     ],
 
@@ -70,7 +70,7 @@ return [
             'cache' => '@twig.cache_dir',
             'debug' => '@twig.debug'
         ]],
-        'after' => function(\Perfumer\Container\Core $container, \Twig_Environment $twig) {
+        'after' => function(\Perfumer\Component\Container\Core $container, \Twig_Environment $twig) {
             $twig->addExtension($container->getService('twig.framework_extension'));
             $twig->addExtension($container->getService('twig.assets_extension'));
         }
@@ -81,18 +81,18 @@ return [
         'arguments' => ['@twig.templates_dir']
     ],
     'twig.framework_extension' => [
-        'class' => 'Perfumer\\View\\TwigExtension\\FrameworkExtension',
+        'class' => 'Perfumer\\MVC\\View\\TwigExtension\\FrameworkExtension',
         'arguments' => ['container']
     ],
     'twig.assets_extension' => [
-        'class' => 'Perfumer\\View\\TwigExtension\\AssetsExtension',
+        'class' => 'Perfumer\\MVC\\View\\TwigExtension\\AssetsExtension',
         'arguments' => ['#assets']
     ],
 
     // Assets
     'assets' => [
         'shared' => true,
-        'class' => 'Perfumer\\Assets\\Core',
+        'class' => 'Perfumer\\Component\\Assets\\Core',
         'arguments' => [[
             'source_path' => '@assets.source_path',
             'web_path' => '@assets.web_path',
@@ -105,7 +105,7 @@ return [
     // Auth
     'auth.database' => [
         'shared' => true,
-        'class' => 'Perfumer\\Auth\\Authorization\\DatabaseAuthorization',
+        'class' => 'Perfumer\\Component\\Auth\\Authorization\\DatabaseAuthorization',
         'arguments' => ['#session', '#auth.token.cookie_handler', [
             'update_gap' => '@auth.update_gap'
         ]]
@@ -113,7 +113,7 @@ return [
 
     'auth.ldap' => [
         'shared' => true,
-        'class' => 'Perfumer\\Auth\\Authorization\\LdapAuthorization',
+        'class' => 'Perfumer\\Component\\Auth\\Authorization\\LdapAuthorization',
         'arguments' => ['#session', '#auth.token.cookie_handler', [
             'update_gap' => '@auth.update_gap',
             'ldap_hostname' => '@ldap.hostname',
@@ -125,14 +125,14 @@ return [
 
     'auth.token.cookie_handler' => [
         'shared' => true,
-        'class' => 'Perfumer\\Auth\\TokenHandler\\CookieHandler',
+        'class' => 'Perfumer\\Component\\Auth\\TokenHandler\\CookieHandler',
         'arguments' => ['#cookie', '@auth.cookie_lifetime']
     ],
 
     // Session
     'session' => [
         'shared' => true,
-        'class' => 'Perfumer\\Session\\Core',
+        'class' => 'Perfumer\\Component\\Session\\Core',
         'arguments' => ['#cache.memcache', [
             'lifetime' => '@auth.session_lifetime'
         ]]
@@ -152,7 +152,7 @@ return [
     'cache.memcache_driver' => [
         'shared' => true,
         'class' => 'Stash\\Driver\\Memcache',
-        'after' => function(\Perfumer\Container\Core $container, \Stash\Driver\Memcache $driver) {
+        'after' => function(\Perfumer\Component\Container\Core $container, \Stash\Driver\Memcache $driver) {
             $driver->setOptions();
         }
     ],
@@ -164,7 +164,7 @@ return [
     // Translator
     'translator' => [
         'shared' => true,
-        'class' => 'Perfumer\\Translator\\Core',
+        'class' => 'Perfumer\\Component\\Translator\\Core',
         'arguments' => ['#cache', [
             'locale' => '@translator.default_locale'
         ]]
@@ -172,31 +172,31 @@ return [
 
     // Validation
     'validation' => [
-        'class' => 'Perfumer\\Validation\\Core',
+        'class' => 'Perfumer\\Component\\Validation\\Core',
         'arguments' => ['#translator']
     ],
 
     // Console
     'console.application' => [
         'shared' => true,
-        'class' => 'Perfumer\\Console\\Application',
+        'class' => 'Perfumer\\MVC\\Console\\Application',
         'arguments' => ['#console.single_application_command']
     ],
 
     'console.single_application_command' => [
         'shared' => true,
-        'class' => 'Perfumer\\Console\\SingleApplicationCommand',
+        'class' => 'Perfumer\\MVC\\Console\\SingleApplicationCommand',
         'arguments' => ['#console.proxy']
     ],
 
     'console.proxy' => [
         'shared' => true,
-        'class' => 'Perfumer\\Console\\Proxy',
+        'class' => 'Perfumer\\MVC\\Console\\Proxy',
         'arguments' => ['container']
     ],
 
     'console.request' => [
-        'class' => 'Perfumer\\Console\\Request'
+        'class' => 'Perfumer\\MVC\\Console\\Request'
     ],
 
     // Helper services

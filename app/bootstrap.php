@@ -15,7 +15,7 @@ define('ATTACHMENTS_DIR', WEB_DIR . 'attachments/');
 require VENDOR_DIR . 'autoload.php';
 
 // DI Container initialization
-$container = new \Perfumer\Container\Core();
+$container = new \Perfumer\Component\Container\Core();
 
 // Default service maps
 $container->registerServiceMap(APP_DIR . 'config/service_map/framework.php');
