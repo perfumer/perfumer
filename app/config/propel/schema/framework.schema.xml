@@ -13,7 +13,7 @@
         <column name="token" type="varchar" size="255" required="true"/>
     </table>
 
-    <table name="_attachment" phpName="Attachment">
+    <table name="_file" phpName="File">
         <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
         <column name="name" type="varchar" size="255" required="true"/>
         <column name="description" type="longvarchar"/>
@@ -121,6 +121,8 @@
         <column name="username" type="varchar" size="255" required="true"/>
         <column name="password" type="varchar" size="255" required="true"/>
         <column name="is_admin" type="boolean" required="true" defaultValue="false"/>
+        <column name="is_disabled" type="boolean" required="true" defaultValue="false"/>
+        <column name="banned_till" type="datetime"/>
         <column name="group_name" type="varchar" size="255"/>
         <column name="group_id" type="integer"/>
         <unique>
