@@ -2,7 +2,7 @@
 
 namespace App\Controller\Layout;
 
-use Perfumer\Controller\CoreController;
+use Perfumer\MVC\Controller\CoreController;
 
 class PlainController extends CoreController
 {

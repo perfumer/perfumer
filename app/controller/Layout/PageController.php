@@ -2,7 +2,7 @@
 
 namespace App\Controller\Layout;
 
-use Perfumer\Controller\TemplateController;
+use Perfumer\MVC\Controller\TemplateController;
 
 class PageController extends TemplateController
 {

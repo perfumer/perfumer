@@ -3,7 +3,7 @@
 namespace App\Controller\Layout;
 
 use App\Model\ApplicationQuery;
-use Perfumer\Controller\SerializeController;
+use Perfumer\MVC\Controller\SerializeController;
 
 class ApiController extends SerializeController
 {

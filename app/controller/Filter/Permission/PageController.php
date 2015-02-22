@@ -2,7 +2,7 @@
 
 namespace App\Controller\Filter\Permission;
 
-use Perfumer\Controller\CoreController;
+use Perfumer\MVC\Controller\CoreController;
 
 class PageController extends CoreController
 {
