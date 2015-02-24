@@ -121,7 +121,7 @@
         <column name="password" type="varchar" size="255" required="true"/>
         <column name="is_admin" type="boolean" required="true" defaultValue="false"/>
         <column name="is_disabled" type="boolean" required="true" defaultValue="false"/>
-        <column name="banned_till" type="datetime"/>
+        <column name="banned_till" type="timestamp"/>
         <column name="group_name" type="varchar" size="255"/>
         <column name="group_id" type="integer"/>
         <unique>

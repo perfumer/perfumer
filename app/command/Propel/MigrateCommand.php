@@ -2,7 +2,7 @@
 
 namespace App\Command\Propel;
 
-use Perfumer\Console\Command\CoreCommand;
+use Perfumer\MVC\Console\Command\CoreCommand;
 
 class MigrateCommand extends CoreCommand
 {

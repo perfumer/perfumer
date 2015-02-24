@@ -2,7 +2,7 @@
 
 namespace App\Command\Propel\Model;
 
-use Perfumer\Console\Command\CoreCommand;
+use Perfumer\MVC\Console\Command\CoreCommand;
 
 class BuildCommand extends CoreCommand
 {

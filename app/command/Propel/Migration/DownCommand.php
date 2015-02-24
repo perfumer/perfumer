@@ -2,7 +2,7 @@
 
 namespace App\Command\Propel\Migration;
 
-use Perfumer\Console\Command\CoreCommand;
+use Perfumer\MVC\Console\Command\CoreCommand;
 
 class DownCommand extends CoreCommand
 {

@@ -2,7 +2,7 @@
 
 namespace App\Command;
 
-use Perfumer\Console\Command\CoreCommand;
+use Perfumer\MVC\Console\Command\CoreCommand;
 
 class ExceptionCommand extends CoreCommand
 {
