@@ -6,6 +6,7 @@ return [
         'default_url' => 'home',
         'prefixes' => [],
         'prefix_options' => [],
+        'data_type' => 'query_string',
         'auto_trim' => true,
         'auto_null' => true
     ],
