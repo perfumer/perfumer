@@ -1,8 +1,8 @@
 <?php
 
 return [
-    // Proxy settings
-    'proxy' => [
+    // External router settings
+    'external_router' => [
         'default_url' => 'home',
         'prefixes' => [],
         'prefix_options' => [],

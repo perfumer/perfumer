@@ -17,6 +17,18 @@ return [
     ],
 
     // Requesting
+    'external_router' => [
+        'shared' => true,
+        'class' => 'Perfumer\\MVC\\ExternalRouter\\HttpRouter',
+        'arguments' => [[
+            'default_url' => '@external_router.default_url',
+            'prefixes' => '@external_router.prefixes',
+            'prefix_options' => '@external_router.prefix_options',
+            'data_type' => '@external_router.data_type',
+            'auto_trim' => '@external_router.auto_trim',
+            'auto_null' => '@external_router.auto_null'
+        ]]
+    ],
     'proxy' => [
         'shared' => true,
         'class' => 'Perfumer\\MVC\\Proxy\\Core',
