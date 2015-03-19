@@ -1,14 +1,9 @@
 <?php
 
 return [
-    // External router settings
-    'external_router' => [
-        'default_url' => 'home',
-        'prefixes' => [],
-        'prefix_options' => [],
-        'data_type' => 'query_string',
-        'auto_trim' => true,
-        'auto_null' => true
+    // View settings
+    'view' => [
+        'extension' => 'twig'
     ],
 
     // Auth settings
