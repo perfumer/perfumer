@@ -19,15 +19,11 @@ return [
     // Requesting
     'external_router' => [
         'shared' => true,
-        'class' => 'Perfumer\\MVC\\ExternalRouter\\HttpRouter',
-        'arguments' => [[
-            'default_url' => '@external_router.default_url',
-            'prefixes' => '@external_router.prefixes',
-            'prefix_options' => '@external_router.prefix_options',
-            'data_type' => '@external_router.data_type',
-            'auto_trim' => '@external_router.auto_trim',
-            'auto_null' => '@external_router.auto_null'
-        ]]
+        'class' => 'Perfumer\\MVC\\ExternalRouter\\HttpRouter'
+    ],
+    'internal_router' => [
+        'shared' => true,
+        'class' => 'Perfumer\\MVC\\InternalRouter\\DirectoryRouter'
     ],
     'proxy' => [
         'shared' => true,
@@ -71,7 +67,14 @@ return [
     // View
     'view' => [
         'class' => 'Perfumer\\MVC\\View\\Core',
-        'arguments' => ['#twig']
+        'arguments' => ['#twig', '#view_router', [
+            'extension' => '@view.extension'
+        ]]
+    ],
+
+    'view_router' => [
+        'shared' => true,
+        'class' => 'Perfumer\\MVC\\View\\Router\\IdenticalRouter'
     ],
 
     // Twig
