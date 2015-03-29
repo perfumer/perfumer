@@ -17,24 +17,21 @@ return [
     ],
 
     // Requesting
-    'external_router' => [
+    'external.http_router' => [
         'shared' => true,
         'class' => 'Perfumer\\MVC\\ExternalRouter\\HttpRouter'
     ],
-    'internal_router' => [
+    'internal.directory_router' => [
         'shared' => true,
         'class' => 'Perfumer\\MVC\\InternalRouter\\DirectoryRouter'
     ],
     'proxy' => [
         'shared' => true,
         'class' => 'Perfumer\\MVC\\Proxy\\Core',
-        'arguments' => ['container']
-    ],
-    'request' => [
-        'class' => 'Perfumer\\MVC\\Proxy\\Request'
-    ],
-    'response' => [
-        'class' => 'Symfony\Component\HttpFoundation\\Response'
+        'arguments' => ['#external.http_router', '#internal.directory_router'],
+        'after' => function(\Perfumer\Component\Container\Core $container, \Perfumer\MVC\Proxy\Core $proxy) {
+            $proxy->inject('_container', $container);
+        }
     ],
 
     // Propel ORM
