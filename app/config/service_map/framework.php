@@ -28,7 +28,7 @@ return [
     'proxy' => [
         'shared' => true,
         'class' => 'Perfumer\\MVC\\Proxy\\Core',
-        'arguments' => ['#external.http_router', '#internal.directory_router'],
+        'arguments' => ['#external.http_router', '#internal.directory_router', '#view_factory'],
         'after' => function(\Perfumer\Component\Container\Core $container, \Perfumer\MVC\Proxy\Core $proxy) {
             $proxy->inject('_container', $container);
         }
@@ -62,8 +62,9 @@ return [
     ],
 
     // View
-    'view' => [
-        'class' => 'Perfumer\\MVC\\View\\Core',
+    'view_factory' => [
+        'shared' => true,
+        'class' => 'Perfumer\\MVC\\View\\ViewFactory',
         'arguments' => ['#twig', '#view_router', [
             'extension' => '@view.extension'
         ]]
