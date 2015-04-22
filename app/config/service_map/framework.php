@@ -28,10 +28,7 @@ return [
     'proxy' => [
         'shared' => true,
         'class' => 'Perfumer\\MVC\\Proxy\\Core',
-        'arguments' => ['#external.http_router', '#internal.directory_router', '#view_factory'],
-        'after' => function(\Perfumer\Component\Container\Core $container, \Perfumer\MVC\Proxy\Core $proxy) {
-            $proxy->inject('_container', $container);
-        }
+        'arguments' => ['container']
     ],
 
     // Propel ORM
