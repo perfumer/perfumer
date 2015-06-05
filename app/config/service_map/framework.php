@@ -136,7 +136,7 @@ return [
     'auth.token.cookie_handler' => [
         'shared' => true,
         'class' => 'Perfumer\\Component\\Auth\\TokenHandler\\CookieHandler',
-        'arguments' => ['#cookie', '@auth.cookie_lifetime']
+        'arguments' => ['#cookie']
     ],
 
     // Session
