@@ -1,5 +1,6 @@
 <?php
 
 return [
-    ROOT_DIR . 'app/manifest.php'
+    new \Perfumer\Package\Manifest\FrameworkManifest(),
+    new \App\Manifest\AppManifest()
 ];

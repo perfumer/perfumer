@@ -2,6 +2,5 @@
     "name": "perfumer/project",
     "description": "Set of assets for Perfumer Framework empty project",
     "dependencies": {
-        "angular": "1.3.*"
     }
 }

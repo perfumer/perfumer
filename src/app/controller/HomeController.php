@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
-use App\Controller\Layout\PageController;
+use Perfumer\Framework\Controller\TemplateController;
 
-class HomeController extends PageController
+class HomeController extends TemplateController
 {
     public function get()
     {

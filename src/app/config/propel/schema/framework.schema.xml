@@ -1,35 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<database name="example" defaultIdMethod="native" namespace="App\Model">
-    <vendor type="mysql">
-        <parameter name="Engine" value="InnoDB"/>
-        <parameter name="Charset" value="utf8"/>
-    </vendor>
-
+<database name="naimi" defaultIdMethod="native" namespace="App\Model">
     <!-- Perfumer default model schemas -->
     <table name="_application" phpName="Application">
         <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
         <column name="name" type="varchar" size="255" required="true"/>
-        <column name="description" type="longvarchar"/>
         <column name="token" type="varchar" size="255" required="true"/>
     </table>
 
-    <table name="_file" phpName="File">
+    <table name="_attachment" phpName="File">
         <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
-        <column name="name" type="varchar" size="255" required="true"/>
-        <column name="modifier" type="integer" required="true" defaultValue="0"/>
+        <column name="name" type="varchar" size="255"/>
         <column name="extension" type="varchar" size="255" required="true"/>
         <column name="model_id" type="integer"/>
         <column name="model_name" type="varchar" size="255"/>
-        <column name="creator_id" type="integer"/>
         <column name="digest" type="varchar" size="255" required="true"/>
         <column name="path" type="varchar" size="255" required="true"/>
         <column name="content_type" type="varchar" size="255" required="true"/>
         <column name="size" type="bigint" required="true" defaultValue="0"/>
-        <column name="version" type="integer" required="true" defaultValue="1"/>
-        <behavior name="timestampable" />
-        <foreign-key foreignTable="_user">
-            <reference local="creator_id" foreign="id"/>
-        </foreign-key>
         <unique>
             <unique-column name="digest"/>
         </unique>
@@ -37,47 +24,16 @@
             <index-column name="model_id"/>
             <index-column name="model_name"/>
         </index>
-    </table>
-
-    <table name="_delegation" phpName="Delegation">
-        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
-        <column name="role_id" type="integer" required="true"/>
-        <column name="model_name" type="varchar" size="255" required="true"/>
-        <column name="model_id" type="integer" required="true"/>
-        <column name="modifier" type="integer" required="true" defaultValue="0"/>
-        <foreign-key foreignTable="_role" onDelete="CASCADE">
-            <reference local="role_id" foreign="id"/>
-        </foreign-key>
-        <index>
-            <index-column name="model_name"/>
-            <index-column name="model_id"/>
-        </index>
-    </table>
-
-    <table name="_permission" phpName="Permission">
-        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
-        <column name="name" type="varchar" size="255" required="true"/>
-        <column name="token" type="varchar" size="255" required="true"/>
+        <behavior name="timestampable" />
     </table>
 
     <table name="_role" phpName="Role">
         <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
         <column name="name" type="varchar" size="255" required="true"/>
-        <column name="modifier" type="integer" required="true" defaultValue="0"/>
+        <column name="permission" type="varchar" size="255"/>
     </table>
 
-    <table name="_role_permission" isCrossRef="true">
-        <column name="role_id" type="integer" primaryKey="true"/>
-        <column name="permission_id" type="integer" primaryKey="true"/>
-        <foreign-key foreignTable="_role" onDelete="CASCADE">
-            <reference local="role_id" foreign="id"/>
-        </foreign-key>
-        <foreign-key foreignTable="_permission" onDelete="CASCADE">
-            <reference local="permission_id" foreign="id"/>
-        </foreign-key>
-    </table>
-
-    <table name="_storage" phpName="Storage">
+    <table name="_parameter" phpName="Parameter">
         <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
         <column name="name" type="varchar" size="255" required="true"/>
         <column name="_group" phpName="Group" tableMapName="GROUP" type="varchar" size="255" required="true"/>
@@ -88,17 +44,29 @@
         </unique>
     </table>
 
-    <table name="_token" phpName="Token">
+    <table name="_session" phpName="Session">
         <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
         <column name="token" type="varchar" size="255" required="true"/>
-        <column name="user_id" type="integer" required="true"/>
-        <foreign-key foreignTable="_user" phpName="User" onDelete="CASCADE">
-            <reference local="user_id" foreign="id"/>
+        <column name="model_id" type="integer"/>
+        <column name="model_name" type="varchar" size="255"/>
+        <column name="expired_at" type="timestamp"/>
+        <column name="application_id" type="integer"/>
+        <foreign-key foreignTable="_application" phpName="Application">
+            <reference local="application_id" foreign="id"/>
         </foreign-key>
         <unique>
             <unique-column name="token"/>
         </unique>
-        <behavior name="timestampable" />
+        <index>
+            <index-column name="model_id"/>
+            <index-column name="model_name"/>
+        </index>
+        <index>
+            <index-column name="expired_at"/>
+        </index>
+        <behavior name="timestampable">
+            <parameter name="disable_updated_at" value="true" />
+        </behavior>
     </table>
 
     <table name="_translation" phpName="Translation">
@@ -106,10 +74,6 @@
         <column name="name" type="varchar" size="255" required="true"/>
         <column name="_group" phpName="Group" tableMapName="GROUP" type="varchar" size="255" required="true"/>
         <column name="text" type="longvarchar" required="true"/>
-        <unique>
-            <unique-column name="name"/>
-            <unique-column name="_group"/>
-        </unique>
         <behavior name="i18n">
             <parameter name="i18n_columns" value="text" />
         </behavior>
@@ -118,19 +82,13 @@
     <table name="_user" phpName="User">
         <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
         <column name="username" type="varchar" size="255" required="true"/>
-        <column name="password" type="varchar" size="255" required="true"/>
+        <column name="password" type="varchar" size="255"/>
         <column name="is_admin" type="boolean" required="true" defaultValue="false"/>
         <column name="is_disabled" type="boolean" required="true" defaultValue="false"/>
         <column name="banned_till" type="timestamp"/>
-        <column name="group_name" type="varchar" size="255"/>
-        <column name="group_id" type="integer"/>
         <unique>
             <unique-column name="username"/>
         </unique>
-        <index>
-            <index-column name="group_name"/>
-            <index-column name="group_id"/>
-        </index>
         <behavior name="timestampable" />
     </table>
 

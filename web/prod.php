@@ -3,7 +3,7 @@
 define('ENV', 'prod');
 
 // Common initialization
-require '../app/bootstrap.php';
+require '../src/bootstrap.php';
 
 // Executing request
-$container->getService('proxy')->run();
+$container->get('proxy')->run();
