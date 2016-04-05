@@ -22,7 +22,7 @@ $container = new \Perfumer\Component\Container\Container();
 $bundler = new \Perfumer\Framework\Bundle\Bundler($container);
 $bundler->importBundlesFile(SRC_DIR . 'bundles.php');
 
-$container->registerService('bundler', $bundler);
+$container->registerSharedService('bundler', $bundler);
 
 // Propel configuration
 $propel_container = $container->get('propel.service_container');
