@@ -3,7 +3,7 @@
 define('ENV', 'dev');
 
 // Common initialization
-require '../src/bootstrap.php';
+require '../init/http/bootstrap.php';
 
 // Executing request
 $container->get('proxy')->run();
