@@ -2,9 +2,9 @@
 
 namespace App\Manifest;
 
-use Perfumer\Framework\Bundle\AbstractManifest;
+use Perfumer\Component\Container\AbstractBundle;
 
-class AppManifest extends AbstractManifest
+class AppManifest extends AbstractBundle
 {
     public function getName()
     {
@@ -13,7 +13,7 @@ class AppManifest extends AbstractManifest
 
     public function getDescription()
     {
-        return '';
+        return 'Initial bundle';
     }
 
     public function getDefinitionFiles()
@@ -35,10 +35,10 @@ class AppManifest extends AbstractManifest
     public function getAliases()
     {
         return [
-            'external_router' => 'app.external_router',
+            'router' => 'app.router',
             'request' => 'app.request',
             'view' => 'app.view',
-            'template_provider' => 'app.view.template_provider'
+            'template_provider' => 'app.template_provider'
         ];
     }
 }

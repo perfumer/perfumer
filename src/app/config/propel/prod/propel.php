@@ -5,10 +5,10 @@ return [
         'database' => [
             'connections' => [
                 'example' => [
-                    'adapter'    => 'mysql',
-                    'dsn'        => 'mysql:host=localhost;dbname=example',
-                    'user'       => 'user',
-                    'password'   => 'password',
+                    'adapter' => 'pgsql',
+                    'dsn' => 'pgsql:host=localhost;port=5432;dbname=example',
+                    'user' => 'postgres',
+                    'password' => 'postgres',
                     'settings' => [
                         'charset' => 'utf8',
                         'queries' => [

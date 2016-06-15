@@ -1,23 +1,9 @@
 <?php
 
 return [
-    'bundle_resolver' => [
-        'alias' => 'bundle.http_resolver'
-    ],
-
-    // Requesting
-    'bundle.http_resolver' => [
+    'app.router' => [
         'shared' => true,
-        'class' => 'Perfumer\\Framework\\Bundle\\Resolver\\HttpResolver',
-        'arguments' => ['@bundle_resolver/bundles']
-    ],
-
-    'app.external_router' => [
-        'shared' => true,
-        'class' => 'Perfumer\\Framework\\ExternalRouter\\HttpRouter',
-        'arguments' => [[
-            'data_type' => 'json',
-        ]]
+        'class' => 'Perfumer\\Framework\\Router\\Http\\DefaultRouter'
     ],
 
     'app.request' => [
@@ -30,10 +16,10 @@ return [
 
     'app.view' => [
         'class' => 'Perfumer\\Framework\\View\\TemplateView',
-        'arguments' => ['#twig', '#app.view.template_provider']
+        'arguments' => ['#twig', '#app.template_provider']
     ],
 
-    'app.view.template_provider' => [
+    'app.template_provider' => [
         'shared' => true,
         'class' => 'Perfumer\\Framework\\View\\TemplateProvider\\TwigFilesystemProvider',
         'arguments' => ['#twig.filesystem_loader', SRC_DIR . 'app/view', 'app']

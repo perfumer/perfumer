@@ -18,11 +18,7 @@ require VENDOR_DIR . 'autoload.php';
 
 // DI Container initialization
 $container = new \Perfumer\Component\Container\Container();
-
-$bundler = new \Perfumer\Framework\Bundle\Bundler($container);
-$bundler->importBundlesFile(__DIR__ . '/bundles.php');
-
-$container->registerSharedService('bundler', $bundler);
+$container->registerBundles(require __DIR__ . '/bundles.php');
 
 // Propel configuration
 $propel_container = $container->get('propel.service_container');
