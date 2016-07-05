@@ -1,5 +1,5 @@
 <?php
 
 return [
-    new \Perfumer\Package\Manifest\ConsoleManifest()
+    new \Perfumer\Package\Bundle\ConsoleBundle()
 ];

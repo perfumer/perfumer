@@ -3,7 +3,8 @@
 return [
     'app.router' => [
         'shared' => true,
-        'class' => 'Perfumer\\Framework\\Router\\Http\\DefaultRouter'
+        'class' => 'Perfumer\\Framework\\Router\\Http\\DefaultRouter',
+        'arguments' => ['#bundle_resolver']
     ],
 
     'app.request' => [

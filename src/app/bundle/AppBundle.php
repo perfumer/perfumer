@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Manifest;
+namespace App\Bundle;
 
 use Perfumer\Component\Container\AbstractBundle;
 
-class AppManifest extends AbstractBundle
+class AppBundle extends AbstractBundle
 {
     public function getName()
     {

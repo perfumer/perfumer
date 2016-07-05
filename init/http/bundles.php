@@ -1,6 +1,6 @@
 <?php
 
 return [
-    new \Perfumer\Package\Manifest\HttpManifest(),
-    new \App\Manifest\AppManifest()
+    new \Perfumer\Package\Bundle\HttpBundle(),
+    new \App\Bundle\AppBundle()
 ];
