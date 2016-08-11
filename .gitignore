@@ -5,6 +5,3 @@
 /tmp/logs/*
 /tmp/twig/*
 /vendor/*
-/web/css/*
-/web/js/*
-/web/vendor/*
