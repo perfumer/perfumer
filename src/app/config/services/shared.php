@@ -1,17 +1,30 @@
 <?php
 
 return [
-    'app.router' => [
+    'app.http_router' => [
         'shared' => true,
         'class' => 'Perfumer\\Framework\\Router\\Http\\DefaultRouter',
         'arguments' => ['#bundle_resolver']
     ],
 
-    'app.request' => [
+    'app.http_request' => [
         'class' => 'Perfumer\\Framework\\Proxy\\Request',
         'arguments' => ['$0', '$1', '$2', '$3', [
             'prefix' => 'App\\Controller',
             'suffix' => 'Controller'
+        ]]
+    ],
+
+    'app.console_router' => [
+        'shared' => true,
+        'class' => 'Perfumer\\Framework\\Router\\ConsoleRouter'
+    ],
+
+    'app.console_request' => [
+        'class' => 'Perfumer\\Framework\\Proxy\\Request',
+        'arguments' => ['$0', '$1', '$2', '$3', [
+            'prefix' => 'App\\Command',
+            'suffix' => 'Command'
         ]]
     ],
 

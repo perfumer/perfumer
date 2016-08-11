@@ -2,5 +2,5 @@
 
 return [
     new \Perfumer\Package\Bundle\HttpBundle(),
-    new \App\Bundle\AppBundle()
+    new \App\Bundle\HttpBundle()
 ];

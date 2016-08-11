@@ -4,7 +4,7 @@ namespace App\Bundle;
 
 use Perfumer\Component\Container\AbstractBundle;
 
-class AppBundle extends AbstractBundle
+class HttpBundle extends AbstractBundle
 {
     public function getName()
     {
@@ -13,7 +13,7 @@ class AppBundle extends AbstractBundle
 
     public function getDescription()
     {
-        return 'Initial bundle';
+        return 'Initial http bundle';
     }
 
     public function getDefinitionFiles()
@@ -35,8 +35,8 @@ class AppBundle extends AbstractBundle
     public function getAliases()
     {
         return [
-            'router' => 'app.router',
-            'request' => 'app.request',
+            'router' => 'app.http_router',
+            'request' => 'app.http_request',
             'view' => 'app.view',
             'template_provider' => 'app.template_provider'
         ];
