@@ -23,6 +23,6 @@ return [
     'app.template_provider' => [
         'shared' => true,
         'class' => 'Perfumer\\Framework\\View\\TemplateProvider\\TwigFilesystemProvider',
-        'arguments' => ['#twig.filesystem_loader', SRC_DIR . 'app/view', 'app']
+        'arguments' => ['#twig.filesystem_loader', __DIR__ . '/../../view', 'app']
     ]
 ];

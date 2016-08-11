@@ -5,7 +5,6 @@ date_default_timezone_set('Asia/Almaty');
 
 // Define directory constants
 define('ROOT_DIR', __DIR__ . '/../../');
-define('SRC_DIR', ROOT_DIR . 'src/');
 define('TMP_DIR', ROOT_DIR . 'tmp/');
 define('VENDOR_DIR', ROOT_DIR . 'vendor/');
 define('WEB_DIR', ROOT_DIR . 'web/');

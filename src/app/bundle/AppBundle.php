@@ -24,11 +24,11 @@ class AppBundle extends AbstractBundle
         ];
     }
 
-    public function getParamFiles()
+    public function getResourceFiles()
     {
         return [
-            __DIR__ . '/../config/params/shared.php',
-            __DIR__ . '/../config/params/' . ENV . '.php',
+            __DIR__ . '/../config/resources/shared.php',
+            __DIR__ . '/../config/resources/' . ENV . '.php',
         ];
     }
 

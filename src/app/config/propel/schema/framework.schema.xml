@@ -7,40 +7,18 @@
         <column name="token" type="varchar" size="255" required="true"/>
     </table>
 
-    <table name="_attachment" phpName="File">
-        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
-        <column name="name" type="varchar" size="255"/>
-        <column name="extension" type="varchar" size="255" required="true"/>
-        <column name="model_id" type="integer"/>
-        <column name="model_name" type="varchar" size="255"/>
-        <column name="digest" type="varchar" size="255" required="true"/>
-        <column name="path" type="varchar" size="255" required="true"/>
-        <column name="content_type" type="varchar" size="255" required="true"/>
-        <column name="size" type="bigint" required="true" defaultValue="0"/>
-        <unique>
-            <unique-column name="digest"/>
-        </unique>
-        <index>
-            <index-column name="model_id"/>
-            <index-column name="model_name"/>
-        </index>
-        <behavior name="timestampable" />
-    </table>
-
     <table name="_role" phpName="Role">
         <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
         <column name="name" type="varchar" size="255" required="true"/>
         <column name="permission" type="varchar" size="255"/>
     </table>
 
-    <table name="_parameter" phpName="Parameter">
+    <table name="_resource" phpName="Resource">
         <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
         <column name="name" type="varchar" size="255" required="true"/>
-        <column name="_group" phpName="Group" tableMapName="GROUP" type="varchar" size="255" required="true"/>
         <column name="value" type="longvarchar" required="true"/>
         <unique>
             <unique-column name="name"/>
-            <unique-column name="_group"/>
         </unique>
     </table>
 

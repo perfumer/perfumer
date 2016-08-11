@@ -1,9 +1,10 @@
 .idea
 .sass-cache
-nbproject
-tmp/twig/*
-vendor/*
-web/css/*
-web/files/*
-web/js/*
-web/vendor/*
+/nbproject
+/tmp/cache/*
+/tmp/logs/*
+/tmp/twig/*
+/vendor/*
+/web/css/*
+/web/js/*
+/web/vendor/*
