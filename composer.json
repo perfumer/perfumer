@@ -19,7 +19,7 @@
         "symfony/http-foundation": "~2",
         "symfony/translation": "~2",
         "symfony/validator": "~2",
-        "tedivm/stash": "~0",
+        "tedivm/stash": "~0.13",
         "twig/twig": "~1"
     },
     "autoload": {
