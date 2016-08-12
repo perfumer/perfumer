@@ -9,7 +9,6 @@ return [
     ],
 
     'twig' => [
-        'debug' => true,
-        'cache_dir' => TMP_DIR . 'twig'
+        'debug' => true
     ],
 ];
