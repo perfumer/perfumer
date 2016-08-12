@@ -1,6 +1,6 @@
 <?php
 
 return [
-    new \Perfumer\Package\Bundle\ConsoleBundle(),
+    new \Perfumer\Package\Framework\Bundle\ConsoleBundle(),
     new \App\Bundle\ConsoleBundle(),
 ];
