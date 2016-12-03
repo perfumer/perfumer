@@ -1,9 +1,6 @@
 <?php
 
-define('ENV', 'prod');
+require __DIR__ . '/../vendor/autoload.php';
 
-// Common initialization
-require __DIR__ . '/../init/console/bootstrap.php';
-
-// Executing request
-$container->get('proxy')->run();
+$application = new \App\Application\ProdConsoleApplication;
+$application->run();
