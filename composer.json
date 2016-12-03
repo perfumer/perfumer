@@ -24,11 +24,11 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\Bundle\\": "src/app/bundle/",
-            "App\\Command\\": "src/app/command/",
-            "App\\Controller\\": "src/app/controller/",
-            "App\\Model\\": "src/app/model/",
-            "App\\Service\\": "src/app/service/"
+            "App\\Bundle\\": "src/bundle/",
+            "App\\Command\\": "src/command/",
+            "App\\Controller\\": "src/controller/",
+            "App\\Model\\": "src/model/",
+            "App\\Service\\": "src/service/"
         }
     },
     "config": {
